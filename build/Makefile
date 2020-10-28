@@ -97,6 +97,28 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/Applications/CMake.app/Contents/bin/cpack --config ./CPackSourceConfig.cmake /Users/virginiafarley/Desktop/C++\ Nanodegree/Mandelbrot\ Set/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	/Applications/CMake.app/Contents/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build/CMakeFiles" "/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build//CMakeFiles/progress.marks"
@@ -257,6 +279,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... mandelbrot_set"
 	@echo "... src/image.o"
