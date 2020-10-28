@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/image.cpp
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/image.h
+fstream
+-
+string
+-
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/main.cpp
+iostream
+-
+memory
+-
+string
+-
+vector
+-
+image.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/image.h
+pixel.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel.h
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
+complex
+-
+window.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/window.h
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel.h
+mandelbrot.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/window.h
+stdexcept
+-
+
