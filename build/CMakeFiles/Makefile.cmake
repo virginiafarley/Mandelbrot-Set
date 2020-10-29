@@ -21,6 +21,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/Compiler/Clang.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/Compiler/GNU.cmake"
+  "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/FindPackageHandleStandardArgs.cmake"
+  "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/FindPackageMessage.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/Internal/CMakeCheckCompilerFlag.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/Platform/Apple-AppleClang-C.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.18/Modules/Platform/Apple-AppleClang-CXX.cmake"
@@ -34,6 +36,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.18.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.18.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.18.2/CMakeSystem.cmake"
+  "/usr/local/lib/cmake/SDL2/sdl2-config-version.cmake"
+  "/usr/local/lib/cmake/SDL2/sdl2-config.cmake"
+  "/usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake"
+  "/usr/local/lib/cmake/opencv4/OpenCVConfig.cmake"
+  "/usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake"
+  "/usr/local/lib/cmake/opencv4/OpenCVModules.cmake"
   )
 
 # The corresponding makefile is:

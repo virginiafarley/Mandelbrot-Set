@@ -4,7 +4,7 @@
 # compile CXX with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/usr/local/Cellar/sdl2/2.0.12_1/include/SDL2 -isystem /usr/local/Cellar/opencv/4.5.0_2/include/opencv4
 
-CXX_FLAGS =  -std=c++11 -pthread -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk
+CXX_FLAGS =  -std=c++11 -pthread -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -std=gnu++11
 

@@ -9,6 +9,8 @@ For more information, please refer to [Wolfram MathWorld](https://mathworld.wolf
 This project is adapted from the tutorial [Solarian Programmer](https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/).
 
 
+[TwinklebearDev](https://www.willusher.io/pages/sdl2/) SDL2 tutorial.
+
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
@@ -22,6 +24,9 @@ This project is adapted from the tutorial [Solarian Programmer](https://solarian
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 * OpenCV
   * in progress
+  * https://github.com/opencv/opencv for information
+* SDL2
+  * TBD
 
 ## Basic Build Instructions
 

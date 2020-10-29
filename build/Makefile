@@ -97,28 +97,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	/Applications/CMake.app/Contents/bin/cpack --config ./CPackSourceConfig.cmake /Users/virginiafarley/Desktop/C++\ Nanodegree/Mandelbrot\ Set/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	/Applications/CMake.app/Contents/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build/CMakeFiles" "/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build//CMakeFiles/progress.marks"
@@ -164,32 +142,32 @@ mandelbrot_set/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/build
 .PHONY : mandelbrot_set/fast
 
-src/image.o: src/image.cpp.o
+src/display.o: src/display.cpp.o
 
-.PHONY : src/image.o
+.PHONY : src/display.o
 
 # target to build an object file
-src/image.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/image.cpp.o
-.PHONY : src/image.cpp.o
+src/display.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/display.cpp.o
+.PHONY : src/display.cpp.o
 
-src/image.i: src/image.cpp.i
+src/display.i: src/display.cpp.i
 
-.PHONY : src/image.i
+.PHONY : src/display.i
 
 # target to preprocess a source file
-src/image.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/image.cpp.i
-.PHONY : src/image.cpp.i
+src/display.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/display.cpp.i
+.PHONY : src/display.cpp.i
 
-src/image.s: src/image.cpp.s
+src/display.s: src/display.cpp.s
 
-.PHONY : src/image.s
+.PHONY : src/display.s
 
 # target to generate assembly for a file
-src/image.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/image.cpp.s
-.PHONY : src/image.cpp.s
+src/display.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/display.cpp.s
+.PHONY : src/display.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -272,6 +250,33 @@ src/pixel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/pixel.cpp.s
 .PHONY : src/pixel.cpp.s
 
+src/pixel_queue.o: src/pixel_queue.cpp.o
+
+.PHONY : src/pixel_queue.o
+
+# target to build an object file
+src/pixel_queue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/pixel_queue.cpp.o
+.PHONY : src/pixel_queue.cpp.o
+
+src/pixel_queue.i: src/pixel_queue.cpp.i
+
+.PHONY : src/pixel_queue.i
+
+# target to preprocess a source file
+src/pixel_queue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/pixel_queue.cpp.i
+.PHONY : src/pixel_queue.cpp.i
+
+src/pixel_queue.s: src/pixel_queue.cpp.s
+
+.PHONY : src/pixel_queue.s
+
+# target to generate assembly for a file
+src/pixel_queue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mandelbrot_set.dir/build.make CMakeFiles/mandelbrot_set.dir/src/pixel_queue.cpp.s
+.PHONY : src/pixel_queue.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -279,13 +284,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... package"
-	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... mandelbrot_set"
-	@echo "... src/image.o"
-	@echo "... src/image.i"
-	@echo "... src/image.s"
+	@echo "... src/display.o"
+	@echo "... src/display.i"
+	@echo "... src/display.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -295,6 +298,9 @@ help:
 	@echo "... src/pixel.o"
 	@echo "... src/pixel.i"
 	@echo "... src/pixel.s"
+	@echo "... src/pixel_queue.o"
+	@echo "... src/pixel_queue.i"
+	@echo "... src/pixel_queue.s"
 .PHONY : help
 
 

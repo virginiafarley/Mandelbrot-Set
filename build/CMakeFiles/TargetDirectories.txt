@@ -1,5 +1,3 @@
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build/CMakeFiles/rebuild_cache.dir
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build/CMakeFiles/edit_cache.dir
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build/CMakeFiles/package_source.dir
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build/CMakeFiles/package.dir
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/build/CMakeFiles/mandelbrot_set.dir

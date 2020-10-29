@@ -26,6 +26,14 @@ std::complex<double> Pixel::cartesianCoords() const {
   return cartesianCoords_;
 }
 
+int Pixel::x() const {
+  return x_;
+}
+
+int Pixel::y() const {
+  return y_;
+}
+
 int Pixel::red() const {
   return red_;
 }
