@@ -40,7 +40,7 @@ Display::~Display() {
 
 // render mandelbrot set
 void Display::RenderMandelbrotSet(PixelQueue pixels) {
-  std::cout << "Render Mandelbrot Set"
+  std::cout << "Render Mandelbrot Set."
             << "\n";
   SDL_Event e;
   SDL_PollEvent(&e);
