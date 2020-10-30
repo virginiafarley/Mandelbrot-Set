@@ -4,6 +4,7 @@
 #include <memory>
 // #include <opencv2/opencv.hpp>
 #include <string>
+#include <thread>
 #include <vector>
 #include "display.h"
 #include "pixel_queue.h"
@@ -18,37 +19,17 @@ int main() {
       std::make_shared<Window<double>>(-2.2, 1.2, -1.7,
                                        1.7);  // subset to search for points
 
-  PixelQueue pixels(image.get(), fractal.get());
-
   // initialize SDL2 display
   Display display(image->width(), image->height());
+
+  // construct queue of pixels
+  PixelQueue pixels(image.get(), fractal.get());
 
   // display takes ownership of pixel queue
   display.RenderMandelbrotSet(std::move(pixels));
 
-  // display.ClearDisplay(); figure this part out
-
-  // while (!pixels.empty()) {
-  //   Pixel pixel = pixels.popFront();
-  //   display.RenderPoint(std::move(pixel));
-  //   std::cout << pixels.size();
-  // }
-
-  // pixel.red(255);
-  // pixel.blue(0);
-  // pixel.green(255);
-  // display.RenderPoint(pixel);
-
-  // for (int i = 0; i < 10; i++) {    // iterate rows (y-axis)
-  //   for (int j = 0; j < 10; j++) {  // iterate columns (x-axis)
-  //     Pixel pixel(j, i);
-  //     pixel.red(255);
-  //     pixel.green(10);
-  //     pixel.blue(255);
-  //     // std::cout << pixel.x() << "\t" << pixel.y() << "\n";
-  //     display.RenderPoint(pixel);
-  //   }
-  // }
   display.InitializeEventQueue();
+
+  // display.ClearDisplay(); // TO DO: figure out later.
   return 0;
 }

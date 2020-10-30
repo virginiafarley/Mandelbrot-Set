@@ -21,9 +21,10 @@ class Display {
   // destructor
   ~Display();
 
-  // to do: rule of five
+  // TO DO: rule of five
 
   // proprietary methods
+
   void RenderMandelbrotSet(PixelQueue pixels);  // render mandelbrot set
   void InitializeEventQueue();                  // handle SDL events
   void ClearDisplay();  // set display background to white

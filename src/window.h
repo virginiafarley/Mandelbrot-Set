@@ -71,6 +71,7 @@ class Window {
   }
 
   // typical behavior methods
+
   T area() const { return width_ * height_; }  // window area
 
  private:

@@ -22,7 +22,7 @@ PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
       pixels_.emplace(std::move(pixel));
     }
   }
-  std::cout << "Created queue of pixels. Size: "
+  std::cout << "Create queue of pixels. Size: "
             << "\t" << size() << "\n";
 }
 

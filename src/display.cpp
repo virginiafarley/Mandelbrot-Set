@@ -28,7 +28,7 @@ Display::Display(int width, int height) : width_(width), height_(height) {
     std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
     throw std::runtime_error("SDL renderer failed");
   }
-  std::cout << "Initialized display. Width: " << width << "\t"
+  std::cout << "Initialize display. Width: " << width << "\t"
             << " Height: " << height << "\n";
 }
 
@@ -40,12 +40,12 @@ Display::~Display() {
 
 // render mandelbrot set
 void Display::RenderMandelbrotSet(PixelQueue pixels) {
-  // std::cout << width_ << "\t" << height_ << "\n";
+  std::cout << "Render Mandelbrot Set"
+            << "\n";
+  SDL_Event e;
+  SDL_PollEvent(&e);
 
   while (!pixels.empty()) {
-    // SDL_Event e;
-    // SDL_PollEvent(&e);
-
     Pixel pixel = pixels.popFront();
 
     // SDL_ALPHA_OPAQUE: alpha value of 255
@@ -54,7 +54,6 @@ void Display::RenderMandelbrotSet(PixelQueue pixels) {
 
     SDL_RenderDrawPoint(ren_, pixel.x(), pixel.y());
   }
-  std::cout << "queue size: " << pixels.size() << "\n";
 
   // // update display since last call
   SDL_RenderPresent(ren_);
@@ -62,6 +61,8 @@ void Display::RenderMandelbrotSet(PixelQueue pixels) {
 
 // handle SDL events
 void Display::InitializeEventQueue() {
+  std::cout << "Initialize event queue."
+            << "\n";
   bool quit = false;
   SDL_Event e;
   while (!quit) {
@@ -75,6 +76,8 @@ void Display::InitializeEventQueue() {
 
 // set display background to white
 void Display::ClearDisplay() {
+  std::cout << "Clear Display"
+            << "\n";
   SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(ren_);
   SDL_RenderPresent(ren_);
