@@ -1,4 +1,5 @@
 #include "pixel_queue.h"
+#include <iostream>
 
 PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
     : image_(image), fractal_(fractal) {
@@ -21,6 +22,8 @@ PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
       pixels_.emplace(std::move(pixel));
     }
   }
+  std::cout << "Created queue of pixels. Size: "
+            << "\t" << size() << "\n";
 }
 
 // remove and return first pixel in queue

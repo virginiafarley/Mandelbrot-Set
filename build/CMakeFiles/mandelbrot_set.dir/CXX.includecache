@@ -6,11 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/display.cpp
+display.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/display.h
+iostream
+-
+stdexcept
+-
+
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/display.h
 SDL.h
 -
-pixel.h
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel.h
+pixel_queue.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
 
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/main.cpp
 iostream

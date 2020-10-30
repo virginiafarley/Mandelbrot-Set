@@ -2,7 +2,7 @@
 #define DISPLAY_H
 
 #include <SDL.h>
-#include "pixel.h"
+#include "pixel_queue.h"
 
 /*
 namespace Image {
@@ -24,9 +24,9 @@ class Display {
   // to do: rule of five
 
   // proprietary methods
-  void RenderPoint(Pixel& pixel);  // render display of a pixel
-  void InitializeEventQueue();     // handle SDL events
-  void ClearDisplay();             // set display background to white
+  void RenderMandelbrotSet(PixelQueue pixels);  // render mandelbrot set
+  void InitializeEventQueue();                  // handle SDL events
+  void ClearDisplay();  // set display background to white
 
  private:
   int width_;

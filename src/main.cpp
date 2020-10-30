@@ -22,11 +22,17 @@ int main() {
 
   // initialize SDL2 display
   Display display(image->width(), image->height());
+
+  // display takes ownership of pixel queue
+  display.RenderMandelbrotSet(std::move(pixels));
+
   // display.ClearDisplay(); figure this part out
 
-  while (!pixels.empty()) {
-    Pixel pixel = pixels.popFront();
-  }
+  // while (!pixels.empty()) {
+  //   Pixel pixel = pixels.popFront();
+  //   display.RenderPoint(std::move(pixel));
+  //   std::cout << pixels.size();
+  // }
 
   // pixel.red(255);
   // pixel.blue(0);
@@ -43,6 +49,6 @@ int main() {
   //     display.RenderPoint(pixel);
   //   }
   // }
-  // display.InitializeEventQueue();
+  display.InitializeEventQueue();
   return 0;
 }

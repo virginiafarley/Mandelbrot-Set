@@ -5,6 +5,7 @@ CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: ../src/display.cpp
 CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: ../src/display.h
 CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: ../src/mandelbrot.h
 CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: ../src/pixel.h
+CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: ../src/pixel_queue.h
 CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: ../src/window.h
 CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/mandelbrot_set.dir/src/display.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h

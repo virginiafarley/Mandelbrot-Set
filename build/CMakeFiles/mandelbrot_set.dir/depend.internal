@@ -6,6 +6,7 @@ CMakeFiles/mandelbrot_set.dir/src/display.cpp.o
  /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/display.h
  /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
  /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel.h
+ /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
  /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/window.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
