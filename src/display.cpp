@@ -67,9 +67,29 @@ void Display::InitializeEventQueue() {
   SDL_Event e;
   while (!quit) {
     while (SDL_PollEvent(&e)) {
-      if (e.type == SDL_QUIT) {
-        quit = true;
+      switch (e.type) {
+        case SDL_QUIT:
+          quit = true;
+        case SDL_KEYDOWN:
+          std::cout << "key pressed.\n";
+          switch (e.key.keysym.sym) {
+            case SDLK_UP:
+              std::cout << "up\n";
+              break;
+
+            case SDLK_DOWN:
+              std::cout << "down\n";
+              break;
+          }
+          break;
+          // case SDL_KEYUP:
+          //   // std::cout << "key released.\n";
+          //   break;
+
+        default:
+          break;
       }
+
       // if (e.type == SDLK_UP) {
       //   std::cout << "key up key pressed";
       //   break;
