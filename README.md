@@ -11,6 +11,8 @@ This project is adapted from the tutorial [Solarian Programmer](https://solarian
 
 [TwinklebearDev](https://www.willusher.io/pages/sdl2/) SDL2 tutorial.
 
+SDL2 Keyboard information: [Handling the Keyboard](https://www.libsdl.org/release/SDL-1.2.15/docs/html/guideinputkeyboard.html)
+
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)

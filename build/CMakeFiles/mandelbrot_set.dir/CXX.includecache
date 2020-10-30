@@ -20,22 +20,6 @@ SDL.h
 pixel_queue.h
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
 
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/main.cpp
-iostream
--
-memory
--
-string
--
-thread
--
-vector
--
-display.h
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/display.h
-pixel_queue.h
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
-
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
 complex
 -

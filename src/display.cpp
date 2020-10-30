@@ -70,6 +70,10 @@ void Display::InitializeEventQueue() {
       if (e.type == SDL_QUIT) {
         quit = true;
       }
+      // if (e.type == SDLK_UP) {
+      //   std::cout << "key up key pressed";
+      //   break;
+      // }
     }
   }
 }
