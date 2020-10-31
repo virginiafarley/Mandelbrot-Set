@@ -76,7 +76,6 @@ void Display::InitializeEventQueue() {
             case SDLK_UP:
               std::cout << "up\n";
               break;
-
             case SDLK_DOWN:
               std::cout << "down\n";
               break;
@@ -89,11 +88,6 @@ void Display::InitializeEventQueue() {
         default:
           break;
       }
-
-      // if (e.type == SDLK_UP) {
-      //   std::cout << "key up key pressed";
-      //   break;
-      // }
     }
   }
 }
