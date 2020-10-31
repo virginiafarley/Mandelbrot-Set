@@ -26,6 +26,7 @@ int main() {
   PixelQueue pixels(image.get(), fractal.get());
 
   // display takes ownership of pixel queue
+  // TO DO: perhaps do not maintain ownership when zoom in or recenter?
   display.RenderMandelbrotSet(std::move(pixels));
 
   display.InitializeEventQueue();
