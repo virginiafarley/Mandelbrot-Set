@@ -51,8 +51,6 @@ PixelQueue Display::ConstructPixelQueue() {
 
 // render default mandelbrot set
 void Display::RenderMandelbrotSet() {
-  std::cout << "Render Mandelbrot Set."
-            << "\n";
   PixelQueue pixels = ConstructPixelQueue();
 
   SDL_Event e;
@@ -119,7 +117,7 @@ void Display::ClearDisplay() {
 // recenter subset to search for points
 void Display::RecenterFractal(const int x, const int y) {
   double pcntRight = (double)(x - width_ / 2) / (double)width_;
-  double pcntUp = (double)(height_ / 2 - y) / (double)height_;
+  double pcntUp = (double)(y - height_ / 2) / (double)height_;
 
   fractal_->moveAlongAxes(pcntRight, pcntUp);
 }
