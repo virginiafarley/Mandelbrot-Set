@@ -26,7 +26,7 @@ int main() {
                   fractal);  // display shares ownership of image and fractal
 
   // render initial mandelbrot set
-  display.RenderDefaultMandelbrotset();
+  display.RenderMandelbrotSet();
 
   display.InitializeEventQueue();
 

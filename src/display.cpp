@@ -50,8 +50,8 @@ PixelQueue Display::ConstructPixelQueue() {
 }
 
 // render default mandelbrot set
-void Display::RenderDefaultMandelbrotset() {
-  std::cout << "Render default Mandelbrot Set."
+void Display::RenderMandelbrotSet() {
+  std::cout << "Render Mandelbrot Set."
             << "\n";
   PixelQueue pixels = ConstructPixelQueue();
 
@@ -68,7 +68,7 @@ void Display::RenderDefaultMandelbrotset() {
     SDL_RenderDrawPoint(ren_, pixel.x(), pixel.y());
   }
 
-  // // update display since last call
+  // update display since last call
   SDL_RenderPresent(ren_);
 }
 
@@ -87,8 +87,8 @@ void Display::InitializeEventQueue() {
           if (e.button.button != SDL_BUTTON_LEFT) {
             break;
           }
-          // update fractal when mouse event occurs
-          RecenterFractal(e.button.x, e.button.y);
+          // recenter display to mouse button event location
+          MoveDisplayToMouseEvent(e.button);
           break;
         case SDL_KEYDOWN:
           switch (e.key.keysym.sym) {
@@ -109,7 +109,7 @@ void Display::InitializeEventQueue() {
 
 // set display background to white
 void Display::ClearDisplay() {
-  std::cout << "Clear Display"
+  std::cout << "Clear display."
             << "\n";
   SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(ren_);
@@ -118,23 +118,17 @@ void Display::ClearDisplay() {
 
 // recenter subset to search for points
 void Display::RecenterFractal(const int x, const int y) {
-  std::cout << "new x center:\t" << x << " new y center:\t" << y << "\n";
-
   double pcntRight = (double)(x - width_ / 2) / (double)width_;
   double pcntUp = (double)(height_ / 2 - y) / (double)height_;
-  std::cout << "move right percent: " << pcntRight << "\n";
-  std::cout << "move up percent: " << pcntUp << "\n";
 
-  std::cout << "fractal x min: " << fractal_->x_min()
-            << " x max: " << fractal_->x_max() << "\n";
-  std::cout << "fractal y min: " << fractal_->y_min()
-            << " y max: " << fractal_->y_max() << "\n";
+  fractal_->moveAlongAxes(pcntRight, pcntUp);
+}
 
-  fractal_->moveXAxisRight(pcntRight);
-  fractal_->moveYAxisUp(pcntUp);
-
-  std::cout << "new fractal x min: " << fractal_->x_min()
-            << " x max: " << fractal_->x_max() << "\n";
-  std::cout << "new fractal y min: " << fractal_->y_min()
-            << " y max: " << fractal_->y_max() << "\n";
+// move display when mouse event occurs
+void Display::MoveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
+  std::cout << "Move display."
+            << "\n";
+  RecenterFractal(button.x,
+                  button.y);  // set new fractal position
+  RenderMandelbrotSet();      // update display
 }
