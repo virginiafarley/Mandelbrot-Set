@@ -22,15 +22,51 @@ memory
 pixel_queue.h
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
 
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/main.cpp
+iostream
+-
+memory
+-
+string
+-
+thread
+-
+vector
+-
+display.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/display.h
+mandelbrot.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
+pixel_queue.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
+window.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/window.h
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.cpp
+mandelbrot.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
+
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
 complex
 -
 window.h
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/window.h
 
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel.cpp
+pixel.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel.h
+stdexcept
+-
+
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel.h
 mandelbrot.h
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
+
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.cpp
+pixel_queue.h
+/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
+iostream
+-
 
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
 queue

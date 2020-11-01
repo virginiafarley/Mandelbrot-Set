@@ -129,7 +129,8 @@ void Display::RecenterFractal(const int x, const int y) {
   // std::cout << "units of image: " << moveUpPcnt * (double)height_ << "\n";
 
   // std::cout << fractal_->width() << "\n";
-  std::cout << "move fractal right units: "
-            << moveRightPcnt * fractal_->width();
-  std::cout << "move fractal up units: " << moveUpPcnt * fractal_->height();
+  std::cout << "move fractal right units: " << moveRightPcnt * fractal_->width()
+            << "\n";
+  std::cout << "move fractal up units: " << moveUpPcnt * fractal_->height()
+            << "\n";
 }
