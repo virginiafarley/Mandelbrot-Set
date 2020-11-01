@@ -2,12 +2,14 @@
 #define DISPLAY_H
 
 #include <SDL.h>
+#include <memory>
 #include "pixel_queue.h"
 
 class Display {
  public:
   // constructor
-  Display(int width, int height);
+  Display(std::shared_ptr<Window<int>> image,
+          std::shared_ptr<Window<double>> fractal);
 
   // destructor
   ~Display();
@@ -23,6 +25,10 @@ class Display {
  private:
   int width_;
   int height_;
+
+  // data handles (owned)
+  std::shared_ptr<Window<int>> image_;
+  std::shared_ptr<Window<double>> fractal_;
 
   // pointers to SDL objects
   SDL_Window* win_{nullptr};

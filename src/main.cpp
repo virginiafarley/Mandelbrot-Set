@@ -7,7 +7,9 @@
 #include <thread>
 #include <vector>
 #include "display.h"
+#include "mandelbrot.h"
 #include "pixel_queue.h"
+#include "window.h"
 
 int main() {
   // shared pointer to image
@@ -20,7 +22,10 @@ int main() {
                                        1.7);  // subset to search for points
 
   // initialize SDL2 display
-  Display display(image->width(), image->height());
+  // Display display(image->width(), image->height());
+
+  // initialize SDL2 display; display shares ownership of image and fractal
+  Display display(image, fractal);
 
   // construct queue of pixels
   PixelQueue pixels(image.get(), fractal.get());

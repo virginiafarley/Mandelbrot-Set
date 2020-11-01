@@ -2,7 +2,12 @@
 #include <iostream>
 #include <stdexcept>
 
-Display::Display(int width, int height) : width_(width), height_(height) {
+Display::Display(std::shared_ptr<Window<int>> image,
+                 std::shared_ptr<Window<double>> fractal)
+    : width_(image->width()),
+      height_(image->height()),
+      image_(image),
+      fractal_(fractal) {
   // initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
     std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -10,9 +15,9 @@ Display::Display(int width, int height) : width_(width), height_(height) {
   }
 
   // Create window positioned at center of screen
-  win_ =
-      SDL_CreateWindow("Mandelbrot Set", SDL_WINDOWPOS_CENTERED,
-                       SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
+  win_ = SDL_CreateWindow("Mandelbrot Set", SDL_WINDOWPOS_CENTERED,
+                          SDL_WINDOWPOS_CENTERED, image->width(),
+                          image->height(), SDL_WINDOW_SHOWN);
   if (win_ == nullptr) {
     std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
   }
@@ -28,8 +33,8 @@ Display::Display(int width, int height) : width_(width), height_(height) {
     std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
     throw std::runtime_error("SDL renderer failed");
   }
-  std::cout << "Initialize display. Width: " << width << "\t"
-            << " Height: " << height << "\n";
+  std::cout << "Initialize display. Width: " << image->width() << "\t"
+            << " Height: " << image->height() << "\n";
 }
 
 Display::~Display() {
