@@ -53,7 +53,7 @@ class Window {
   }
   void x_max(T x_max) {
     x_max_ = x_max;
-    width_ = x_max - x_min_
+    width_ = x_max - x_min_;
   }
   void y_min(T y_min) {
     y_min_ = y_min;
