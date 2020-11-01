@@ -31,6 +31,15 @@ int main() {
 
   display.InitializeEventQueue();
 
+  // use mouse to move around
+  // when you click, x and y coordinates becom the center
+  // for example, center starts at 250, 250
+  // when you click 0, 250: x2 - x1 = -250.  xmin xmax + the new delta
+  // change new center to complex number
+
+  // display needs ownership of pixel queue saved as member variable
+  // pixel queue needs new constructors / modifiers to modify pixels
+
   // display.ClearDisplay(); // TO DO: figure out later.
   return 0;
 }

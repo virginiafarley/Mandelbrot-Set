@@ -71,15 +71,21 @@ void Display::InitializeEventQueue() {
         case SDL_QUIT:
           quit = true;
         case SDL_MOUSEBUTTONDOWN:
-          std::cout << "mouse clicked.\n";
+          if (e.button.button != SDL_BUTTON_LEFT) {
+            break;
+          }
           std::cout << "x coordinate:\t" << e.button.x << " y coordinate:\t"
                     << e.button.y << "\n";
-          if (e.button.button == SDL_BUTTON_LEFT) {
-            std::cout << "re-center to this area \n";
-          }
+          std::cout << "move right: " << e.button.x - width_ / 2 << " units"
+                    << "\n";
+          std::cout << "move right: "
+                    << 100.0 * (double)(e.button.x - width_ / 2) /
+                           (double)width_
+                    << "% of width"
+                    << "\n";
+          std::cout << "move up: " << height_ / 2 - e.button.y << " units\n";
           break;
         case SDL_KEYDOWN:
-          std::cout << "key pressed.\n";
           switch (e.key.keysym.sym) {
             case SDLK_UP:
               std::cout << "zoom in\n";
@@ -89,14 +95,6 @@ void Display::InitializeEventQueue() {
               break;
           }
           break;
-
-          // TouchFingerEvents: TO DO look into this
-          // e.g. finger down, finger drag
-
-          // case SDL_KEYUP:
-          //   // std::cout << "key released.\n";
-          //   break;
-
         default:
           break;
       }
