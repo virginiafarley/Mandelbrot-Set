@@ -78,6 +78,17 @@ class Window {
     y_max_ += unitsUp;
   }
 
+  // move window right on x-axis and up on y-axis
+  void moveAlongAxes(double pcntRight, double pcntUp) {
+    double unitsUp = pcntUp * height_;  // units to move up
+    y_min_ += unitsUp;
+    y_max_ += unitsUp;
+
+    double unitsRight = pcntRight * width_;  // units to move right
+    x_min_ += unitsRight;
+    x_max_ += unitsRight;
+  }
+
   void width(T width) {
     if (width <= 0) {
       throw std::invalid_argument("window width must be positive");

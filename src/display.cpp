@@ -120,17 +120,21 @@ void Display::ClearDisplay() {
 void Display::RecenterFractal(const int x, const int y) {
   std::cout << "new x center:\t" << x << " new y center:\t" << y << "\n";
 
-  double moveRightPcnt = (double)(x - width_ / 2) / (double)width_;
-  double moveUpPcnt = (double)(height_ / 2 - y) / (double)height_;
-  std::cout << "move right percent: " << moveRightPcnt << "\n";
-  std::cout << "move up percent: " << moveUpPcnt << "\n";
+  double pcntRight = (double)(x - width_ / 2) / (double)width_;
+  double pcntUp = (double)(height_ / 2 - y) / (double)height_;
+  std::cout << "move right percent: " << pcntRight << "\n";
+  std::cout << "move up percent: " << pcntUp << "\n";
 
-  // std::cout << "units of image: " << moveRightPcnt * (double)width_ << "\n";
-  // std::cout << "units of image: " << moveUpPcnt * (double)height_ << "\n";
+  std::cout << "fractal x min: " << fractal_->x_min()
+            << " x max: " << fractal_->x_max() << "\n";
+  std::cout << "fractal y min: " << fractal_->y_min()
+            << " y max: " << fractal_->y_max() << "\n";
 
-  // std::cout << fractal_->width() << "\n";
-  std::cout << "move fractal right units: " << moveRightPcnt * fractal_->width()
-            << "\n";
-  std::cout << "move fractal up units: " << moveUpPcnt * fractal_->height()
-            << "\n";
+  fractal_->moveXAxisRight(pcntRight);
+  fractal_->moveYAxisUp(pcntUp);
+
+  std::cout << "new fractal x min: " << fractal_->x_min()
+            << " x max: " << fractal_->x_max() << "\n";
+  std::cout << "new fractal y min: " << fractal_->y_min()
+            << " y max: " << fractal_->y_max() << "\n";
 }
