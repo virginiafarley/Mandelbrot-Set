@@ -22,17 +22,11 @@ int main() {
                                        1.7);  // subset to search for points
 
   // initialize SDL2 display
-  // Display display(image->width(), image->height());
+  Display display(image,
+                  fractal);  // display shares ownership of image and fractal
 
-  // initialize SDL2 display; display shares ownership of image and fractal
-  Display display(image, fractal);
-
-  // construct queue of pixels
-  PixelQueue pixels(image.get(), fractal.get());
-
-  // display takes ownership of pixel queue
-  // TO DO: perhaps do not maintain ownership when zoom in or recenter?
-  display.RenderMandelbrotSet(std::move(pixels));
+  // render initial mandelbrot set
+  display.RenderDefaultMandelbrotset();
 
   display.InitializeEventQueue();
 

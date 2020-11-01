@@ -17,17 +17,18 @@ class Display {
   // TO DO: rule of five
 
   // proprietary methods
-
-  void RenderMandelbrotSet(PixelQueue pixels);  // render mandelbrot set
-  void InitializeEventQueue();                  // handle SDL events
-  void ClearDisplay();  // set display background to white
-
+  PixelQueue ConstructPixelQueue();   // construct and return queue of pixels
+  void RenderDefaultMandelbrotset();  // render default mandelbrot set
+  void InitializeEventQueue();        // handle SDL events
+  void ClearDisplay();                // set display background to white
+  void RecenterFractal(const int x,
+                       const int y);  // recenter subset to search for points
  private:
   int width_;
   int height_;
 
   // data handles (owned)
-  std::shared_ptr<Window<int>> image_;
+  std::shared_ptr<Window<int>> image_;  // TO DO: image_ should not be owned.
   std::shared_ptr<Window<double>> fractal_;
 
   // pointers to SDL objects

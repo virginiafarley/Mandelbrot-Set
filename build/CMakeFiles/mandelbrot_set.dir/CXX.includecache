@@ -22,26 +22,6 @@ memory
 pixel_queue.h
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
 
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/main.cpp
-iostream
--
-memory
--
-string
--
-thread
--
-vector
--
-display.h
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/display.h
-mandelbrot.h
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
-pixel_queue.h
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/pixel_queue.h
-window.h
-/Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/window.h
-
 /Users/virginiafarley/Desktop/C++ Nanodegree/Mandelbrot Set/src/mandelbrot.h
 complex
 -

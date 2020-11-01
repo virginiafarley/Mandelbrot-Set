@@ -43,10 +43,18 @@ Display::~Display() {
   SDL_Quit();
 }
 
-// render mandelbrot set
-void Display::RenderMandelbrotSet(PixelQueue pixels) {
-  std::cout << "Render Mandelbrot Set."
+// construct and return queue of pixels
+PixelQueue Display::ConstructPixelQueue() {
+  PixelQueue pixels(image_.get(), fractal_.get());
+  return pixels;  // not copied due to RVO
+}
+
+// render default mandelbrot set
+void Display::RenderDefaultMandelbrotset() {
+  std::cout << "Render default Mandelbrot Set."
             << "\n";
+  PixelQueue pixels = ConstructPixelQueue();
+
   SDL_Event e;
   SDL_PollEvent(&e);
 
@@ -79,16 +87,8 @@ void Display::InitializeEventQueue() {
           if (e.button.button != SDL_BUTTON_LEFT) {
             break;
           }
-          std::cout << "x coordinate:\t" << e.button.x << " y coordinate:\t"
-                    << e.button.y << "\n";
-          std::cout << "move right: " << e.button.x - width_ / 2 << " units"
-                    << "\n";
-          std::cout << "move right: "
-                    << 100.0 * (double)(e.button.x - width_ / 2) /
-                           (double)width_
-                    << "% of width"
-                    << "\n";
-          std::cout << "move up: " << height_ / 2 - e.button.y << " units\n";
+          // update fractal when mouse event occurs
+          RecenterFractal(e.button.x, e.button.y);
           break;
         case SDL_KEYDOWN:
           switch (e.key.keysym.sym) {
@@ -114,4 +114,19 @@ void Display::ClearDisplay() {
   SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(ren_);
   SDL_RenderPresent(ren_);
+}
+
+// recenter subset to search for points
+void Display::RecenterFractal(const int x, const int y) {
+  std::cout << "new x center:\t" << x << " new y center:\t" << y << "\n";
+
+  double moveRightPcnt = (double)(x - width_ / 2) / (double)width_;
+  double moveUpPcnt = (double)(height_ / 2 - y) / (double)height_;
+  std::cout << "move right percent: " << moveRightPcnt << "\n";
+  std::cout << "move up percent: " << moveUpPcnt << "\n";
+
+  // std::cout << "units of image: " << moveRightPcnt * (double)width_ << "\n";
+  // std::cout << "units of image: " << moveUpPcnt * (double)height_ << "\n";
+
+  std::cout << fractal_->width() << "\n";
 }

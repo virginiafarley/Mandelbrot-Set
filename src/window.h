@@ -47,10 +47,22 @@ class Window {
   T height() const { return height_; }
 
   // setters
-  void x_min(T x_min) { x_min_ = x_min; }
-  void x_max(T x_max) { x_max_ = x_max; }
-  void y_min(T y_min) { y_min_ = y_min; }
-  void y_max(T y_max) { y_max_ = y_max; }
+  void x_min(T x_min) {
+    x_min_ = x_min;
+    width_ = x_max_ - x_min;
+  }
+  void x_max(T x_max) {
+    x_max_ = x_max;
+    width_ = x_max - x_min_
+  }
+  void y_min(T y_min) {
+    y_min_ = y_min;
+    height_ = y_max_ - y_min;
+  }
+  void y_max(T y_max) {
+    y_max_ = y_max;
+    height_ = y_max - y_min_;
+  }
 
   void width(T width) {
     if (width <= 0) {
