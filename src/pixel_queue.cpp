@@ -13,7 +13,7 @@ PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
       std::complex<double> complexCoords = pixel.GetComplexCoords();
 
       // compute Bernstein t value using escape time algoirthm
-      double tValue = Mandelbrot::TValueFromEscapeTime(complexCoords);
+      double tValue = Mandelbrot::tValueFromEscapeTime(complexCoords);
 
       // color pixel from Bernstein polynomials
       pixel.color(tValue);

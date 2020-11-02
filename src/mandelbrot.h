@@ -16,22 +16,22 @@ std::complex<double> MandelbrotFunction(std::complex<double>& z,
 
 // convert Cartesian coordinates to complex coordinates
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-std::complex<double> ComplexFromCartesian(Window<int>* image,
+std::complex<double> complexFromCartesian(Window<int>* image,
                                           Window<double>* fractal,
                                           std::complex<double>& coordinates);
 
 // return number of iterations adjusted to [0, 1] interval
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-double BernsteinTValue(const int& nIterations);
+double bernsteinTValue(const int& nIterations);
 
 // return Bernstein t value from escape time algorithm
-double TValueFromEscapeTime(const std::complex<double>& c);
+double tValueFromEscapeTime(const std::complex<double>& c);
 
 // determine RGB pixel colors from Bernstein polynomials
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-int BernsteinRed(const double& tValue);
-int BernsteinBlue(const double& tValue);
-int BernsteinGreen(const double& tValue);
+int bernsteinRed(const double& tValue);
+int bernsteinBlue(const double& tValue);
+int bernsteinGreen(const double& tValue);
 
 }  // namespace Mandelbrot
 

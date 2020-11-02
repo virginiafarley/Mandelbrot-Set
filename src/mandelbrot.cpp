@@ -9,7 +9,7 @@ std::complex<double> Mandelbrot::MandelbrotFunction(
 
 // convert Cartesian coordinates to Complex coordinates
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-std::complex<double> Mandelbrot::ComplexFromCartesian(
+std::complex<double> Mandelbrot::complexFromCartesian(
     Window<int>* image,
     Window<double>* fractal,
     std::complex<double>& coordinates) {
@@ -24,13 +24,13 @@ std::complex<double> Mandelbrot::ComplexFromCartesian(
 
 // adjust number of iterations to [0, 1] interval
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-double Mandelbrot::BernsteinTValue(const int& nIterations) {
+double Mandelbrot::bernsteinTValue(const int& nIterations) {
   return (double)nIterations /
          (double)Mandelbrot::maxIterations;  // [0, 1] interval
 }
 
 // return Bernstein t value from escape time algorithm
-double Mandelbrot::TValueFromEscapeTime(const std::complex<double>& c) {
+double Mandelbrot::tValueFromEscapeTime(const std::complex<double>& c) {
   std::complex<double> z{0};
   int nIterations{0};
   while (true) {
@@ -41,19 +41,19 @@ double Mandelbrot::TValueFromEscapeTime(const std::complex<double>& c) {
     z = Mandelbrot::MandelbrotFunction(z, c);
     nIterations++;
   }
-  return Mandelbrot::BernsteinTValue(
+  return Mandelbrot::bernsteinTValue(
       nIterations);  // use t value to color pixels
 }
 
 // determine RGB pixel colors from Bernstein polynomials
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-int Mandelbrot::BernsteinRed(const double& tValue) {
+int Mandelbrot::bernsteinRed(const double& tValue) {
   return 9 * (1.0 - tValue) * std::pow(tValue, 3.0) * 255;
 }
 
-int Mandelbrot::BernsteinBlue(const double& tValue) {
+int Mandelbrot::bernsteinBlue(const double& tValue) {
   return 8.5 * std::pow(1.0 - tValue, 3.0) * tValue * 255;
 }
-int Mandelbrot::BernsteinGreen(const double& tValue) {
+int Mandelbrot::bernsteinGreen(const double& tValue) {
   return 15 * std::pow(1.0 - tValue, 2.0) * std::pow(tValue, 2.0) * 255;
 }

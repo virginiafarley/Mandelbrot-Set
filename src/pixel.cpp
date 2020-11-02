@@ -70,9 +70,9 @@ void Pixel::green(int green) {
 
 // set rgb colors from Bernstein tvalue
 void Pixel::color(const double& tValue) {
-  Pixel::red(Mandelbrot::BernsteinRed(tValue));
-  Pixel::green(Mandelbrot::BernsteinGreen(tValue));
-  Pixel::blue(Mandelbrot::BernsteinBlue(tValue));
+  Pixel::red(Mandelbrot::bernsteinRed(tValue));
+  Pixel::green(Mandelbrot::bernsteinGreen(tValue));
+  Pixel::blue(Mandelbrot::bernsteinBlue(tValue));
 }
 
 // set data handles (not owned)
@@ -85,5 +85,5 @@ void Pixel::fractal(Window<double>* fractal) {
 
 // compute complex domain of pixel coordinates
 std::complex<double> Pixel::GetComplexCoords() {
-  return Mandelbrot::ComplexFromCartesian(image_, fractal_, cartesianCoords_);
+  return Mandelbrot::complexFromCartesian(image_, fractal_, cartesianCoords_);
 }
