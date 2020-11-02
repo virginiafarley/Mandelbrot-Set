@@ -20,6 +20,7 @@ Display::Display(std::shared_ptr<Window<int>> image,
                           image->height(), SDL_WINDOW_SHOWN);
   if (win_ == nullptr) {
     std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+    throw std::runtime_error("SDL window creation failed");
   }
 
   // Create a renderer that will draw to the window

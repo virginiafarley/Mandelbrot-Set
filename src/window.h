@@ -50,18 +50,30 @@ class Window {
   void x_min(T x_min) {
     x_min_ = x_min;
     width_ = x_max_ - x_min;
+    if (width_ <= 0) {
+      throw std::invalid_argument("window width must be positive");
+    }
   }
   void x_max(T x_max) {
     x_max_ = x_max;
     width_ = x_max - x_min_;
+    if (width_ <= 0) {
+      throw std::invalid_argument("window width must be positive");
+    }
   }
   void y_min(T y_min) {
     y_min_ = y_min;
     height_ = y_max_ - y_min;
+    if (height_ <= 0) {
+      throw std::invalid_argument("window height must be positive");
+    }
   }
   void y_max(T y_max) {
     y_max_ = y_max;
     height_ = y_max - y_min_;
+    if (height_ <= 0) {
+      throw std::invalid_argument("window height must be positive");
+    }
   }
 
   // move window right on x-axis and update x_min and x_max
