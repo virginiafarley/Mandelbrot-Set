@@ -6,7 +6,14 @@ Zooming in on the Mandelbrot set illustrates its infinitely complex pattern.  Th
 
 To learn more about how SDL2 is used in this project, please refer to the SDL2 tutorial [TwinklebearDev](https://www.willusher.io/pages/sdl2/) and the SDL2 library keyboard documentation [Handling the Keyboard](https://www.libsdl.org/release/SDL-1.2.15/docs/html/guideinputkeyboard.html).
 
-When the program is running, you can recenter the display to a new location by using the <kbd>Mouse</kbd> to click on on any point in the display.
+When you start the program, the display looks like this:
+![image](images/mandelbrot1.png)
+
+
+
+When the program is running, you can recenter the display to a new location by using the <kbd>Mouse</kbd> to click on on any point in the display:
+
+![image](images/mandelbrot2.png)
 
 ## Dependencies for Running Locally
 * cmake >= 3.11.3
@@ -22,7 +29,7 @@ When the program is running, you can recenter the display to a new location by u
 * SDL2 >= 2.0.12
   * All OSecs: [click here for installation instructions](https://wiki.libsdl.org/Installation)
   * Mac: can also install with brew: `brew install sdl2` and use pkg-config to set compile flags and library options: `pkg-config --cflags --libs sld2`.
-  * Linux and Windows: for more information, please refer to this tutorial: (https://trenki2.github.io/blog/2017/06/02/using-sdl2-with-cmake/).
+  * Linux and Windows: for more information, please refer to this tutorial: [Using sdl2 with cmake](https://trenki2.github.io/blog/2017/06/02/using-sdl2-with-cmake/).
 
 ## Basic Build Instructions
 
