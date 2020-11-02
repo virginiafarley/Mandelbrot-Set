@@ -11,7 +11,7 @@ const int maxIterations{
            // sequence bounded in absolute value for given point
 
 // return Mandelbrot function f_c(z) = z^2 + c
-std::complex<double> MandelbrotFunction(std::complex<double>& z,
+std::complex<double> mandelbrotFunction(std::complex<double>& z,
                                         const std::complex<double>& c);
 
 // convert Cartesian coordinates to complex coordinates

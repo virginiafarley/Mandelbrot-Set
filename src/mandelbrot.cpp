@@ -1,7 +1,7 @@
 #include "mandelbrot.h"
 
 // Mandelbrot function
-std::complex<double> Mandelbrot::MandelbrotFunction(
+std::complex<double> Mandelbrot::mandelbrotFunction(
     std::complex<double>& z,
     const std::complex<double>& c) {
   return std::pow(z, 2) + c;
@@ -38,7 +38,7 @@ double Mandelbrot::tValueFromEscapeTime(const std::complex<double>& c) {
     if (std::abs(z) > 2 || nIterations >= Mandelbrot::maxIterations) {
       break;
     }
-    z = Mandelbrot::MandelbrotFunction(z, c);
+    z = Mandelbrot::mandelbrotFunction(z, c);
     nIterations++;
   }
   return Mandelbrot::bernsteinTValue(
