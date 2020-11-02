@@ -7,13 +7,18 @@ Zooming in on the Mandelbrot set illustrates its infinitely complex pattern.  Th
 To learn more about how SDL2 is used in this project, please refer to the SDL2 tutorial [TwinklebearDev](https://www.willusher.io/pages/sdl2/) and the SDL2 library keyboard documentation [Handling the Keyboard](https://www.libsdl.org/release/SDL-1.2.15/docs/html/guideinputkeyboard.html).
 
 When you start the program, the display looks like this:
-![image](images/mandelbrot1.png)
+
+<p align="center">
+<img src="images/mandelbrot1.png" alt="mandelbrot1" width="500"/>
+</p>
 
 
 
 When the program is running, you can recenter the display to a new location by using the <kbd>Mouse</kbd> to click on on any point in the display:
 
-![image](images/mandelbrot2.png)
+<p align="center">
+<img src="images/mandelbrot2.png" alt="mandelbrot2" width="500"/>
+</p>
 
 ## Dependencies for Running Locally
 * cmake >= 3.11.3
