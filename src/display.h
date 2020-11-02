@@ -11,10 +11,11 @@ class Display {
   Display(std::shared_ptr<Window<int>> image,
           std::shared_ptr<Window<double>> fractal);
 
-  // destructor
-  ~Display();
-
-  // TO DO: rule of five
+  ~Display();                                   // destructor
+  Display(const Display&) = delete;             // copy constructor
+  Display& operator=(const Display&) = delete;  // copy assignment operator
+  Display(Display&&) = delete;                  // move constructor
+  Display& operator=(Display&&) = delete;       // move assignment operator
 
   // proprietary methods
   PixelQueue ConstructPixelQueue();  // construct and return queue of pixels
