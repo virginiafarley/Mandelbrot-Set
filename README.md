@@ -4,10 +4,7 @@ This is a rendering of the Mandelbrot set.  This project is adapted from the tut
 
 Zooming in on the Mandelbrot set illustrates its infinitely complex pattern.  This boundary is a fractal curve, meaning that regardless of the level of magnification, the curve retains the same general pattern of irregularity.  For more information, please refer to [Wolfram MathWorld](https://mathworld.wolfram.com/MandelbrotSet.html) or [Wikipedia](https://en.wikipedia.org/wiki/Mandelbrot_set).
 
-
-[TwinklebearDev](https://www.willusher.io/pages/sdl2/) SDL2 tutorial.
-
-SDL2 Keyboard information: [Handling the Keyboard](https://www.libsdl.org/release/SDL-1.2.15/docs/html/guideinputkeyboard.html)
+To learn more about how SDL2 is used in this project, please refer to the SDL2 tutorial [TwinklebearDev](https://www.willusher.io/pages/sdl2/) and the SDL2 library keyboard documentation [Handling the Keyboard](https://www.libsdl.org/release/SDL-1.2.15/docs/html/guideinputkeyboard.html).
 
 ## Dependencies for Running Locally
 * cmake >= 3.11.3
@@ -22,8 +19,8 @@ SDL2 Keyboard information: [Handling the Keyboard](https://www.libsdl.org/releas
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 * SDL2 >= 2.0.12
   * All OSecs: [click here for installation instructions](https://wiki.libsdl.org/Installation)
-  * Mac: Can also install with brew: `brew install sdl2` and use pkg-config to link libraries: `pkg-config --cflags --libs sld2`.
-  * For more information, please refer to this tutorial: (https://trenki2.github.io/blog/2017/06/02/using-sdl2-with-cmake/).
+  * Mac: can also install with brew: `brew install sdl2` and use pkg-config to set compile flags and library options: `pkg-config --cflags --libs sld2`.
+  * Linux and Windows: for more information, please refer to this tutorial: (https://trenki2.github.io/blog/2017/06/02/using-sdl2-with-cmake/).
 
 ## Basic Build Instructions
 
