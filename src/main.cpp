@@ -1,8 +1,5 @@
-
-// #include <SDL.h>
 #include <iostream>
 #include <memory>
-// #include <opencv2/opencv.hpp>
 #include <string>
 #include <thread>
 #include <vector>
@@ -33,6 +30,6 @@ int main() {
 
   display.InitializeEventQueue();
 
-  // display.ClearDisplay(); // TO DO: figure out later.
+  // display.ClearDisplay(); // NOT USED
   return 0;
 }

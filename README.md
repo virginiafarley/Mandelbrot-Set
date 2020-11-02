@@ -35,26 +35,19 @@ When the program is running, you can recenter the display to a new location by u
 ## Directory Structure
 ```bash
 .
-├── _config.yml
-├── _data
-│   └── members.yml
-├── _drafts
-│   ├── begin-with-the-crazy-ideas.md
-│   └── on-simplicity-in-technology.md
-├── _includes
-│   ├── footer.html
-│   └── header.html
-├── _layouts
-│   ├── default.html
-│   └── post.html
-├── _posts
-│   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-│   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── _sass
-│   ├── _base.scss
-│   └── _layout.scss
-├── _site
-├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid front matter
-
+├── CMakeLists.txt # build configuration
+├── README.md
+├── .gitignore
+├── images # images used in README.md
+├── src
+│   └── display.cpp # encapsulates rendering of SDL2 display
+│   └── display.h
+│   └── main.cpp
+│   └── mandelbrot.cpp # namespace of related mathematical functions 
+│   └── mandelbrot.h
+│   └── pixel_queue.cpp #  data structure that stores pixels
+│   └── pixel_queue.h
+│   └── pixel.cpp # representation of single pixel
+│   └── pixel.h
+│   └── window.h
 ```
