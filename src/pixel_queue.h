@@ -8,6 +8,7 @@
 #include <mutex>
 #include <queue>
 #include <thread>
+#include <vector>
 #include "pixel.h"
 
 template <class T>
@@ -51,21 +52,36 @@ class PixelQueue {
   // constructor
   PixelQueue(Window<int>* image, Window<double>* fractal);
 
+  // destructor
+  ~PixelQueue();
+
+  PixelQueue(const PixelQueue&) = delete;  // copy constructor
+  PixelQueue& operator=(const PixelQueue&) =
+      delete;                                    // copy assignment operator
+  PixelQueue(PixelQueue&&) = delete;             // move constructor
+  PixelQueue& operator=(PixelQueue&&) = delete;  // move assignment operator
+
   // typical behavior methods
-  Pixel popFront();  // remove and return first pixel in queue
 
-  void pushBack(Pixel&& pixel);  // add pixel to back of queue
+  void constructPixelRow(int rowNumber);  // create row of pixels
 
-  size_t size();  // queue size
-  bool empty();   // return true when queue empty
+  // Pixel popFront();  // remove and return first pixel in queue
+
+  // void pushBack(Pixel&& pixel);  // add pixel to back of queue
+
+  // size_t size();  // queue size
+  // bool empty();   // return true when queue empty
 
  private:
-  std::queue<Pixel> pixels_;
+  MessageQueue<Pixel> pixels_;
+  std::vector<std::future<void>> futures_;
 
-  // data handles (owned)
-  std::shared_ptr<MessageQueue<Pixel>> pixels2_ =
-      std::make_shared<MessageQueue<Pixel>>();  // shared pointer to enable
-                                                // access by multiple threads
+  // std::queue<Pixel> pixels_;
+
+  // // data handles (owned)
+  // std::shared_ptr<MessageQueue<Pixel>> pixels2_ =
+  //     std::make_shared<MessageQueue<Pixel>>();  // shared pointer to enable
+  //                                               // access by multiple threads
 
   // data handles (not owned)
   Window<int>* image_;       // raw pointer to image

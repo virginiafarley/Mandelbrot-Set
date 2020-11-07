@@ -18,15 +18,18 @@ class Display {
   Display& operator=(Display&&) = delete;       // move assignment operator
 
   // proprietary methods
-  PixelQueue ConstructPixelQueue();  // construct and return queue of pixels
-  void RenderMandelbrotSet();        // render default mandelbrot set
-  void InitializeEventQueue();       // handle SDL events
-  void ClearDisplay();               // set display background to white
+  //   PixelQueue ConstructPixelQueue();  // construct and return queue of
+  //   pixels void RenderMandelbrotSet();        // render default mandelbrot
+  //   set
+  //   void InitializeEventQueue();  // handle SDL events
+  //   void ClearDisplay();          // set display background to white
 
-  void RecenterFractal(const int x,
-                       const int y);  // recenter subset to search for points
-  void MoveDisplayToMouseEvent(
-      SDL_MouseButtonEvent button);  // move display when mouse event occurs
+  //   void RecenterFractal(const int x,
+  //                        const int y);  // recenter subset to search for
+  //                        points
+  //   void MoveDisplayToMouseEvent(
+  //       SDL_MouseButtonEvent button);  // move display when mouse event
+  //       occurs
 
  private:
   int width_;

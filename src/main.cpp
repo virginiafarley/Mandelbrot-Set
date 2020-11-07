@@ -9,6 +9,7 @@
 #include "window.h"
 
 int main() {
+  /*
   // shared pointer to image
   std::shared_ptr<Window<int>> image =
       std::make_shared<Window<int>>(500, 500);  // 1200 800
@@ -31,5 +32,6 @@ int main() {
   display.InitializeEventQueue();
 
   // display.ClearDisplay(); // NOT USED
+  */
   return 0;
 }

@@ -43,7 +43,7 @@ Display::~Display() {
   SDL_DestroyRenderer(ren_);
   SDL_Quit();
 }
-
+/*
 // construct and return queue of pixels
 PixelQueue Display::ConstructPixelQueue() {
   PixelQueue pixels(image_.get(), fractal_.get());
@@ -70,7 +70,9 @@ void Display::RenderMandelbrotSet() {
   // update display since last call
   SDL_RenderPresent(ren_);
 }
+*/
 
+/*
 // handle SDL events
 void Display::InitializeEventQueue() {
   std::cout << "Initialize event queue."
@@ -123,6 +125,7 @@ void Display::RecenterFractal(const int x, const int y) {
   fractal_->moveAlongAxes(pcntRight, pcntUp);
 }
 
+
 // move display when mouse event occurs
 void Display::MoveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
   std::cout << "Move display."
@@ -131,3 +134,4 @@ void Display::MoveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
                   button.y);  // set new fractal position
   RenderMandelbrotSet();      // update display
 }
+*/
