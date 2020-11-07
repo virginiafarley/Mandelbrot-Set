@@ -1,5 +1,4 @@
 #include "pixel_queue.h"
-#include <iostream>
 
 PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
     : image_(image), fractal_(fractal) {

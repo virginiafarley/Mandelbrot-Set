@@ -1,8 +1,50 @@
 #ifndef PIXEL_QUEUE_H
 #define PIXEL_QUEUE_H
 
+// NEXT STEP: USE MULTITHREADING TO SPEED UP EXECUTION
+
+#include <future>
+#include <memory>
+#include <mutex>
 #include <queue>
+#include <thread>
 #include "pixel.h"
+
+template <class T>
+class MessageQueue {
+ public:
+  T receive() {
+    // perform queue modification under the lock
+    std::unique_lock<std::mutex> uLock(mutex_);
+    cond_.wait(uLock, [this] {
+      return !messages_.empty();
+    });  // pass unique lock to condition variable
+
+    // remove first element from queue
+    T msg = std::move(messages_.front());
+    messages_.pop();
+
+    return msg;  // will not be copied due to return value optimization (RVO) in
+                 // C++
+  }
+
+  void send(T&& msg) {
+    // simulate some work
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    // perform vector modification under the lock
+    std::lock_guard<std::mutex> uLock(mutex_);
+
+    // add element to back of queue
+    messages_.emplace(std::move(msg));
+    cond_.notify_one();  // notify client after pushing new element
+  }
+
+ private:
+  std::mutex mutex_;              // protects shared resource pixels_
+  std::condition_variable cond_;  // signaling mechanism
+  std::queue<T> messages_;
+};
 
 class PixelQueue {
  public:
@@ -19,6 +61,11 @@ class PixelQueue {
 
  private:
   std::queue<Pixel> pixels_;
+
+  // data handles (owned)
+  std::shared_ptr<MessageQueue<Pixel>> pixels2_ =
+      std::make_shared<MessageQueue<Pixel>>();  // shared pointer to enable
+                                                // access by multiple threads
 
   // data handles (not owned)
   Window<int>* image_;       // raw pointer to image
