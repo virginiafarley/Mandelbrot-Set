@@ -3,8 +3,8 @@
 
 // NEXT STEP: USE MULTITHREADING TO SPEED UP EXECUTION
 
+#include <condition_variable>
 #include <future>
-#include <memory>
 #include <mutex>
 #include <queue>
 #include <thread>
@@ -64,8 +64,9 @@ class PixelQueue {
   // typical behavior methods
 
   void constructPixelRow(int rowNumber);  // create row of pixels
+  Pixel popFront();  // remove and return first pixel in queue
 
-  // Pixel popFront();  // remove and return first pixel in queue
+  // TO DO : figure out how to receive messages and sent them to display
 
   // void pushBack(Pixel&& pixel);  // add pixel to back of queue
 
@@ -73,7 +74,7 @@ class PixelQueue {
   // bool empty();   // return true when queue empty
 
  private:
-  MessageQueue<Pixel> pixels_;
+  MessageQueue<Pixel> queue_;  // queue of pixels
   std::vector<std::future<void>> futures_;
 
   // std::queue<Pixel> pixels_;

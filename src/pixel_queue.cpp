@@ -1,4 +1,5 @@
 #include "pixel_queue.h"
+#include <iostream>
 
 PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
     : image_(image), fractal_(fractal) {
@@ -31,8 +32,15 @@ void PixelQueue::constructPixelRow(int rowNumber) {
     pixel.color(tValue);
 
     // send pixel to back of queue
-    pixels_.send(std::move(pixel));
+    queue_.send(std::move(pixel));
   }
+}
+
+// remove and return first pixel in queue
+Pixel PixelQueue::popFront() {
+  Pixel pixel = queue_.receive();
+
+  return pixel;  // not copied due to RVO
 }
 
 // PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
@@ -58,14 +66,6 @@ void PixelQueue::constructPixelRow(int rowNumber) {
 //   }
 //   // std::cout << "Create queue of pixels. Size: "
 //   //           << "\t" << size() << "\n";
-// }
-
-// // remove and return first pixel in queue
-// Pixel PixelQueue::popFront() {
-//   Pixel pixel = std::move(pixels_.front());
-//   pixels_.pop();
-
-//   return pixel;  // not copied due to RVO
 // }
 
 // // add pixel to back of queue

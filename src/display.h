@@ -19,23 +19,25 @@ class Display {
 
   // proprietary methods
   //   PixelQueue ConstructPixelQueue();  // construct and return queue of
-  //   pixels void RenderMandelbrotSet();        // render default mandelbrot
-  //   set
-  //   void InitializeEventQueue();  // handle SDL events
-  //   void ClearDisplay();          // set display background to white
+  //   pixels
+  void RenderMandelbrotSet();   // render default mandelbrot set
+  void InitializeEventQueue();  // handle SDL events
+  void ClearDisplay();          // set display background to white
+  void RecenterFractal(const int x,
+                       const int y);  // recenter subset to search for points
+  void MoveDisplayToMouseEvent(
+      SDL_MouseButtonEvent button);  // move display when mouse event occurs
 
-  //   void RecenterFractal(const int x,
-  //                        const int y);  // recenter subset to search for
-  //                        points
-  //   void MoveDisplayToMouseEvent(
-  //       SDL_MouseButtonEvent button);  // move display when mouse event
-  //       occurs
+  int pixelCount();  // return total number of pixels to display
 
  private:
   int width_;
   int height_;
 
   // data handles (owned)
+
+  PixelQueue pixels_;  // object that holds pixels to display
+
   std::shared_ptr<Window<int>> image_;  // TO DO: image_ should not be owned.
   std::shared_ptr<Window<double>> fractal_;
 

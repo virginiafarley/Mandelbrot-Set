@@ -7,7 +7,8 @@ Display::Display(std::shared_ptr<Window<int>> image,
     : width_(image->width()),
       height_(image->height()),
       image_(image),
-      fractal_(fractal) {
+      fractal_(fractal),
+      pixels_(image.get(), fractal.get()) {
   // initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
     std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -49,30 +50,34 @@ PixelQueue Display::ConstructPixelQueue() {
   PixelQueue pixels(image_.get(), fractal_.get());
   return pixels;  // not copied due to RVO
 }
+*/
 
 // render default mandelbrot set
 void Display::RenderMandelbrotSet() {
-  PixelQueue pixels = ConstructPixelQueue();
-
+  // PixelQueue pixels = ConstructPixelQueue();
   SDL_Event e;
   SDL_PollEvent(&e);
 
-  while (!pixels.empty()) {
-    Pixel pixel = pixels.popFront();
+  int totalPixels = pixelCount();
+  int currPixels = 0;
+
+  // while (!pixels.empty()) {
+  while (currPixels < totalPixels) {
+    Pixel pixel = pixels_.popFront();
 
     // SDL_ALPHA_OPAQUE: alpha value of 255
     SDL_SetRenderDrawColor(ren_, pixel.red(), pixel.green(), pixel.blue(),
                            SDL_ALPHA_OPAQUE);
 
     SDL_RenderDrawPoint(ren_, pixel.x(), pixel.y());
+    currPixels++;
+    std::cout << "current pixel count: " << currPixels << std::endl;
   }
 
   // update display since last call
   SDL_RenderPresent(ren_);
 }
-*/
 
-/*
 // handle SDL events
 void Display::InitializeEventQueue() {
   std::cout << "Initialize event queue."
@@ -125,7 +130,6 @@ void Display::RecenterFractal(const int x, const int y) {
   fractal_->moveAlongAxes(pcntRight, pcntUp);
 }
 
-
 // move display when mouse event occurs
 void Display::MoveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
   std::cout << "Move display."
@@ -134,4 +138,7 @@ void Display::MoveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
                   button.y);  // set new fractal position
   RenderMandelbrotSet();      // update display
 }
-*/
+
+int Display::pixelCount() {
+  return width_ * height_;
+}

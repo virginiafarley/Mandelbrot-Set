@@ -9,7 +9,6 @@
 #include "window.h"
 
 int main() {
-  /*
   // shared pointer to image
   std::shared_ptr<Window<int>> image =
       std::make_shared<Window<int>>(500, 500);  // 1200 800
@@ -18,6 +17,14 @@ int main() {
   std::shared_ptr<Window<double>> fractal =
       std::make_shared<Window<double>>(-2.2, 1.2, -1.7,
                                        1.7);  // subset to search for points
+
+  // PixelQueue pixels(image.get(), fractal.get());
+
+  // while (true) {
+  //   Pixel pixel = pixels.popFront();
+  //   std::cout << "pixel x: " << pixel.x() << "pixel y: " << pixel.y()
+  //             << std::endl;
+  // }
 
   // initialize SDL2 display
   Display display(image,
@@ -32,6 +39,6 @@ int main() {
   display.InitializeEventQueue();
 
   // display.ClearDisplay(); // NOT USED
-  */
+
   return 0;
 }
