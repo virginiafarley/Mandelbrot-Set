@@ -97,10 +97,16 @@ void Display::initializeEventQueue() {
         case SDL_KEYDOWN:
           switch (e.key.keysym.sym) {
             case SDLK_UP:
-              std::cout << "zoom in\n";
+              moveDisplay(Direction::Up);
               break;
             case SDLK_DOWN:
-              std::cout << "zoom out\n";
+              moveDisplay(Direction::Down);
+              break;
+            case SDLK_RIGHT:
+              moveDisplay(Direction::Right);
+              break;
+            case SDLK_LEFT:
+              moveDisplay(Direction::Left);
               break;
           }
           break;
@@ -135,6 +141,38 @@ void Display::moveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
 
   recenterFractal(button.x,
                   button.y);  // set new fractal position
+
+  updateRendering();  // update display
+}
+
+// move display when arrow key pressed
+void Display::moveDisplay(Direction direction) {
+  double pcntUp;
+  double pcntRight;
+
+  switch (direction) {
+    case Direction::Up:
+      pcntUp = -Mandelbrot::MOVE_PERCENTAGE;
+      pcntRight = .0;
+      break;
+    case Direction::Down:
+      pcntUp = Mandelbrot::MOVE_PERCENTAGE;
+      pcntRight = .0;
+      break;
+    case Direction::Right:
+      pcntUp = .0;
+      pcntRight = Mandelbrot::MOVE_PERCENTAGE;
+      break;
+    case Direction::Left:
+      pcntUp = .0;
+      pcntRight = -Mandelbrot::MOVE_PERCENTAGE;
+      break;
+    default:
+      break;
+  }
+
+  // recenter subset to search for points
+  fractal_->moveAlongAxes(pcntRight, pcntUp);
 
   updateRendering();  // update display
 }

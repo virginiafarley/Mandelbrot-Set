@@ -3,7 +3,10 @@
 
 #include <SDL.h>
 #include <memory>
+#include <string>
 #include "pixel_queue.h"
+
+enum class Direction { Up, Down, Right, Left };
 
 class Display {
  public:
@@ -27,6 +30,7 @@ class Display {
                        const int y);  // recenter subset to search for points
   void moveDisplayToMouseEvent(
       SDL_MouseButtonEvent button);  // move display when mouse event occurs
+  void moveDisplay(Direction direction);  // move display when arrow key pressed
 
   int pixelCount();  // return total number of pixels to display
 

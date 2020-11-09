@@ -101,6 +101,17 @@ class Window {
     x_max_ += unitsRight;
   }
 
+  // modify window boundary by zooming in / out with multiplier
+  void zoomIntoWindow(double zoomMultiplier) {
+    x_min_ *= zoomMultiplier;
+    x_max_ *= zoomMultiplier;
+    y_min_ *= zoomMultiplier;
+    y_min_ *= zoomMultiplier;
+
+    height_ *= zoomMultiplier;
+    width_ *= zoomMultiplier;
+  }
+
   void width(T width) {
     if (width <= 0) {
       throw std::invalid_argument("window width must be positive");

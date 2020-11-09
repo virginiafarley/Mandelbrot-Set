@@ -26,7 +26,7 @@ std::complex<double> Mandelbrot::complexFromCartesian(
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
 double Mandelbrot::bernsteinTValue(const int& nIterations) {
   return (double)nIterations /
-         (double)Mandelbrot::maxIterations;  // [0, 1] interval
+         (double)Mandelbrot::MAX_ITERATIONS;  // [0, 1] interval
 }
 
 // return Bernstein t value from escape time algorithm
@@ -34,8 +34,8 @@ double Mandelbrot::tValueFromEscapeTime(const std::complex<double>& c) {
   std::complex<double> z{0};
   int nIterations{0};
   while (true) {
-    // if abs(z) > 2 or maxIterations reached, sequence will escape to infinity
-    if (std::abs(z) > 2 || nIterations >= Mandelbrot::maxIterations) {
+    // if abs(z) > 2 or MAX_ITERATIONS reached, sequence will escape to infinity
+    if (std::abs(z) > 2 || nIterations >= Mandelbrot::MAX_ITERATIONS) {
       break;
     }
     z = Mandelbrot::mandelbrotFunction(z, c);
