@@ -1,5 +1,4 @@
 #include "pixel_queue.h"
-#include <iostream>
 
 PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
     : image_(image), fractal_(fractal) {
@@ -43,30 +42,12 @@ Pixel PixelQueue::popFront() {
   return pixel;  // not copied due to RVO
 }
 
-// PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
-//     : image_(image), fractal_(fractal) {
-//   for (int i = 0; i < image->height(); i++) {   // iterate rows (y-axis)
-//     for (int j = 0; j < image->width(); j++) {  // iterate columns (x-axis)
-
-//       // pixel instances hold non-owning reference to image and fractal
-//       Pixel pixel(j, i, image, fractal);
-
-//       // calculate complex representation of pixel coordinates
-//       std::complex<double> complexCoords = pixel.GetComplexCoords();
-
-//       // compute Bernstein t value using escape time algoirthm
-//       double tValue = Mandelbrot::tValueFromEscapeTime(complexCoords);
-
-//       // color pixel from Bernstein polynomials
-//       pixel.color(tValue);
-
-//       // move pixel to back of queue (move constructor)
-//       pixels_.emplace(std::move(pixel));
-//     }
-//   }
-//   // std::cout << "Create queue of pixels. Size: "
-//   //           << "\t" << size() << "\n";
-// }
+// return when entire queue has been constructed
+void PixelQueue::waitForCompletion() {
+  // wait for all threads to complete
+  std::for_each(futures_.begin(), futures_.end(),
+                [](std::future<void>& ftr) { ftr.wait(); });
+}
 
 // // add pixel to back of queue
 // void PixelQueue::pushBack(Pixel&& pixel) {

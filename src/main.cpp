@@ -1,3 +1,4 @@
+#include <chrono>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -18,7 +19,23 @@ int main() {
       std::make_shared<Window<double>>(-2.2, 1.2, -1.7,
                                        1.7);  // subset to search for points
 
-  // PixelQueue pixels(image.get(), fractal.get());
+  std::chrono::high_resolution_clock::time_point startTime =
+      std::chrono::high_resolution_clock::now();
+
+  PixelQueue pixels(image.get(), fractal.get());
+  std::cout << "create pixel queue " << std::endl;
+
+  pixels.waitForCompletion();
+  std::cout << "complete" << std::endl;
+
+  std::chrono::high_resolution_clock::time_point endTime =
+      std::chrono::high_resolution_clock::now();
+
+  double cycleDuration =
+      std::chrono::duration<double, std::ratio<1, 1>>(endTime - startTime)
+          .count();
+
+  std::cout << "time to complete: " << cycleDuration << std::endl;
 
   // while (true) {
   //   Pixel pixel = pixels.popFront();
@@ -27,16 +44,16 @@ int main() {
   // }
 
   // initialize SDL2 display
-  Display display(image,
-                  fractal);  // display shares ownership of image and fractal
+  // Display display(image,
+  // fractal);  // display shares ownership of image and fractal
 
   // render initial mandelbrot set
-  display.renderMandelbrotSet();
+  // display.renderMandelbrotSet();
 
-  std::cout << "Render initial Mandelbrot Set"
-            << "\n";
+  // std::cout << "Render initial Mandelbrot Set"
+  //           << "\n";
 
-  display.initializeEventQueue();
+  // display.initializeEventQueue();
 
   // display.clearDisplay(); // NOT USED
 

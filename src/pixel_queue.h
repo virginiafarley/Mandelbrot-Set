@@ -1,8 +1,6 @@
 #ifndef PIXEL_QUEUE_H
 #define PIXEL_QUEUE_H
 
-// NEXT STEP: USE MULTITHREADING TO SPEED UP EXECUTION
-
 #include <condition_variable>
 #include <future>
 #include <mutex>
@@ -30,9 +28,6 @@ class MessageQueue {
   }
 
   void send(T&& msg) {
-    // simulate some work
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
     // perform vector modification under the lock
     std::lock_guard<std::mutex> uLock(mutex_);
 
@@ -64,7 +59,8 @@ class PixelQueue {
   // typical behavior methods
 
   void constructPixelRow(int rowNumber);  // create row of pixels
-  Pixel popFront();  // remove and return first pixel in queue
+  Pixel popFront();          // remove and return first pixel in queue
+  void waitForCompletion();  // return when entire queue has been constructed
 
   // TO DO : figure out how to receive messages and sent them to display
 
@@ -76,13 +72,6 @@ class PixelQueue {
  private:
   MessageQueue<Pixel> queue_;  // queue of pixels
   std::vector<std::future<void>> futures_;
-
-  // std::queue<Pixel> pixels_;
-
-  // // data handles (owned)
-  // std::shared_ptr<MessageQueue<Pixel>> pixels2_ =
-  //     std::make_shared<MessageQueue<Pixel>>();  // shared pointer to enable
-  //                                               // access by multiple threads
 
   // data handles (not owned)
   Window<int>* image_;       // raw pointer to image

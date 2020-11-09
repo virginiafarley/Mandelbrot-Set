@@ -54,6 +54,8 @@ PixelQueue Display::ConstructPixelQueue() {
 
 // render default mandelbrot set
 void Display::renderMandelbrotSet() {
+  pixels_.waitForCompletion();
+  std::cout << "pixels complete " << std::endl;
   // PixelQueue pixels = ConstructPixelQueue();
   SDL_Event e;
   SDL_PollEvent(&e);
