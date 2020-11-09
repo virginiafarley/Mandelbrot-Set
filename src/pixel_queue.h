@@ -36,6 +36,18 @@ class MessageQueue {
     cond_.notify_one();  // notify client after pushing new element
   }
 
+  // return true when queue empty
+  bool empty() {
+    std::lock_guard<std::mutex> uLock(mutex_);
+    return messages_.empty();
+  }
+
+  // queue size
+  size_t size() {
+    std::lock_guard<std::mutex> uLock(mutex_);
+    return messages_.size();
+  }
+
  private:
   std::mutex mutex_;              // protects shared resource pixels_
   std::condition_variable cond_;  // signaling mechanism
@@ -58,16 +70,17 @@ class PixelQueue {
 
   // typical behavior methods
 
+  // void constructQueue()
+  void pushAll();                         // add all pixels tp queue
   void constructPixelRow(int rowNumber);  // create row of pixels
-  Pixel popFront();          // remove and return first pixel in queue
   void waitForCompletion();  // return when entire queue has been constructed
+  Pixel popFront();          // remove and return first pixel in queue
+
+  size_t size();  // queue size
+  bool empty();   // return true when queue empty
 
   // TO DO : figure out how to receive messages and sent them to display
-
   // void pushBack(Pixel&& pixel);  // add pixel to back of queue
-
-  // size_t size();  // queue size
-  // bool empty();   // return true when queue empty
 
  private:
   MessageQueue<Pixel> queue_;  // queue of pixels

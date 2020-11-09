@@ -2,17 +2,26 @@
 
 PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
     : image_(image), fractal_(fractal) {
-  for (int i = 0; i < image->height(); i++) {  // iterate rows (y-axis)
-    futures_.emplace_back(
-        // launch thread for each row
-        std::async(std::launch::any, &PixelQueue::constructPixelRow, this, i));
-  }
+  // construct and add all pixels to queue
+  pushAll();
 }
 
 PixelQueue::~PixelQueue() {
   // wait for all threads to complete
   std::for_each(futures_.begin(), futures_.end(),
                 [](std::future<void>& ftr) { ftr.wait(); });
+
+  // destroy all elements to improve space overhead
+  futures_.clear();
+}
+
+// add all pixels to queue
+void PixelQueue::pushAll() {
+  for (int i = 0; i < image_->height(); i++) {  // iterate rows (y-axis)
+    futures_.emplace_back(
+        // launch thread for each row
+        std::async(std::launch::any, &PixelQueue::constructPixelRow, this, i));
+  }
 }
 
 // create row of pixels
@@ -34,6 +43,15 @@ void PixelQueue::constructPixelRow(int rowNumber) {
     queue_.send(std::move(pixel));
   }
 }
+// return when entire queue has been constructed
+void PixelQueue::waitForCompletion() {
+  // wait for all threads to complete
+  std::for_each(futures_.begin(), futures_.end(),
+                [](std::future<void>& ftr) { ftr.wait(); });
+
+  // destroy all elements to improve space overhead
+  futures_.clear();
+}
 
 // remove and return first pixel in queue
 Pixel PixelQueue::popFront() {
@@ -42,22 +60,11 @@ Pixel PixelQueue::popFront() {
   return pixel;  // not copied due to RVO
 }
 
-// return when entire queue has been constructed
-void PixelQueue::waitForCompletion() {
-  // wait for all threads to complete
-  std::for_each(futures_.begin(), futures_.end(),
-                [](std::future<void>& ftr) { ftr.wait(); });
+// queue size
+size_t PixelQueue::size() {
+  return queue_.size();
 }
 
-// // add pixel to back of queue
-// void PixelQueue::pushBack(Pixel&& pixel) {
-//   pixels_.emplace(std::move(pixel));
-// }
-
-// size_t PixelQueue::size() {
-//   return pixels_.size();
-// };
-
-// bool PixelQueue::empty() {
-//   return pixels_.empty();
-// }
+bool PixelQueue::empty() {
+  return queue_.empty();
+}
