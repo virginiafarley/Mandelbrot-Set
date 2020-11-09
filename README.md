@@ -67,7 +67,7 @@ When the program is running, you can recenter the display to a new location by u
 
 | Section  |  Criteria|  Details |
 |---|---|---|
-| Loops, Functions, I/O | The project demonstrates an understanding of C++ functions and control structures. | A variety of control structures are used in this project.  For example, a selection flow of control is implemented in the **display** class's member function ***InitializeEventQueue*** via a switch statement. A repetition control struture is implemented in the **pixel queue** constructor via nested for loops.  The project code is clearly organized into functions. |
+| Loops, Functions, I/O | The project demonstrates an understanding of C++ functions and control structures. | A variety of control structures are used in this project.  For example, a selection flow of control is implemented in the **display** class's member function ***initializeEventQueue*** via a switch statement. A repetition control struture is implemented in the **pixel queue** constructor via nested for loops.  The project code is clearly organized into functions. |
 | Loops, Functions, I/O | The project reads data from a file and process the data, or the program writes data to a file. | n/a  |
 | Loops, Functions, I/O | The project accepts user input and processes the input. | n/a  |
 | Object Oriented Programming | The project uses Object Oriented Programming techniques.  | The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks (e.g. **pixel.h**, **pixel_queue.h**, **display.h**, and **window.h**). |

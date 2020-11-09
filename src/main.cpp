@@ -31,14 +31,14 @@ int main() {
                   fractal);  // display shares ownership of image and fractal
 
   // render initial mandelbrot set
-  display.RenderMandelbrotSet();
+  display.renderMandelbrotSet();
 
   std::cout << "Render initial Mandelbrot Set"
             << "\n";
 
-  display.InitializeEventQueue();
+  display.initializeEventQueue();
 
-  // display.ClearDisplay(); // NOT USED
+  // display.clearDisplay(); // NOT USED
 
   return 0;
 }

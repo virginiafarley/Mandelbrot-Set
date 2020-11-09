@@ -53,7 +53,7 @@ PixelQueue Display::ConstructPixelQueue() {
 */
 
 // render default mandelbrot set
-void Display::RenderMandelbrotSet() {
+void Display::renderMandelbrotSet() {
   // PixelQueue pixels = ConstructPixelQueue();
   SDL_Event e;
   SDL_PollEvent(&e);
@@ -71,7 +71,7 @@ void Display::RenderMandelbrotSet() {
 
     SDL_RenderDrawPoint(ren_, pixel.x(), pixel.y());
     currPixels++;
-    std::cout << "current pixel count: " << currPixels << std::endl;
+    // std::cout << "current pixel count: " << currPixels << std::endl;
   }
 
   // update display since last call
@@ -79,7 +79,7 @@ void Display::RenderMandelbrotSet() {
 }
 
 // handle SDL events
-void Display::InitializeEventQueue() {
+void Display::initializeEventQueue() {
   std::cout << "Initialize event queue."
             << "\n";
   bool quit = false;
@@ -94,7 +94,7 @@ void Display::InitializeEventQueue() {
             break;
           }
           // recenter display to mouse button event location
-          MoveDisplayToMouseEvent(e.button);
+          moveDisplayToMouseEvent(e.button);
           break;
         case SDL_KEYDOWN:
           switch (e.key.keysym.sym) {
@@ -114,7 +114,7 @@ void Display::InitializeEventQueue() {
 }
 
 // set display background to white
-void Display::ClearDisplay() {
+void Display::clearDisplay() {
   std::cout << "Clear display."
             << "\n";
   SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
@@ -123,7 +123,7 @@ void Display::ClearDisplay() {
 }
 
 // recenter subset to search for points
-void Display::RecenterFractal(const int x, const int y) {
+void Display::recenterFractal(const int x, const int y) {
   double pcntRight = (double)(x - width_ / 2) / (double)width_;
   double pcntUp = (double)(y - height_ / 2) / (double)height_;
 
@@ -131,12 +131,12 @@ void Display::RecenterFractal(const int x, const int y) {
 }
 
 // move display when mouse event occurs
-void Display::MoveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
+void Display::moveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
   std::cout << "Move display."
             << "\n";
-  RecenterFractal(button.x,
+  recenterFractal(button.x,
                   button.y);  // set new fractal position
-  RenderMandelbrotSet();      // update display
+  renderMandelbrotSet();      // update display
 }
 
 int Display::pixelCount() {
