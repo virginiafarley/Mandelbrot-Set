@@ -18,9 +18,9 @@ class Display {
   Display& operator=(Display&&) = delete;       // move assignment operator
 
   // proprietary methods
-  //   PixelQueue ConstructPixelQueue();  // construct and return queue of
-  //   pixels
+
   void renderMandelbrotSet();   // render default mandelbrot set
+  void updateRendering();       // update rendering
   void initializeEventQueue();  // handle SDL events
   void clearDisplay();          // set display background to white
   void recenterFractal(const int x,

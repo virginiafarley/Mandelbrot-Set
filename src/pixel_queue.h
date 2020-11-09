@@ -70,8 +70,7 @@ class PixelQueue {
 
   // typical behavior methods
 
-  // void constructQueue()
-  void pushAll();                         // add all pixels tp queue
+  void pushAll();                         // add all pixels to queue
   void constructPixelRow(int rowNumber);  // create row of pixels
   void waitForCompletion();  // return when entire queue has been constructed
   Pixel popFront();          // remove and return first pixel in queue

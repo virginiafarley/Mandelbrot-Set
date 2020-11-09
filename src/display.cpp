@@ -70,6 +70,12 @@ void Display::renderMandelbrotSet() {
   SDL_RenderPresent(ren_);
 }
 
+// update rendering
+void Display::updateRendering() {
+  pixels_.pushAll();      // add pixels to queue
+  renderMandelbrotSet();  // render new display
+}
+
 // handle SDL events
 void Display::initializeEventQueue() {
   std::cout << "Initialize event queue."
@@ -130,7 +136,7 @@ void Display::moveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
   recenterFractal(button.x,
                   button.y);  // set new fractal position
 
-  renderMandelbrotSet();  // update display
+  updateRendering();  // update display
 }
 
 // return total number of pixels to display
