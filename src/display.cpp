@@ -44,26 +44,18 @@ Display::~Display() {
   SDL_DestroyRenderer(ren_);
   SDL_Quit();
 }
-/*
-// construct and return queue of pixels
-PixelQueue Display::ConstructPixelQueue() {
-  PixelQueue pixels(image_.get(), fractal_.get());
-  return pixels;  // not copied due to RVO
-}
-*/
 
 // render default mandelbrot set
 void Display::renderMandelbrotSet() {
-  pixels_.waitForCompletion();
-  std::cout << "pixels complete " << std::endl;
-  // PixelQueue pixels = ConstructPixelQueue();
+  // pixels_.waitForCompletion();  // TO DO: check if this needed
+
   SDL_Event e;
   SDL_PollEvent(&e);
 
   int totalPixels = pixelCount();
   int currPixels = 0;
 
-  // while (!pixels.empty()) {
+  // while (!pixels.empty()) { TO DO: add functionality in pixel queue
   while (currPixels < totalPixels) {
     Pixel pixel = pixels_.popFront();
 
