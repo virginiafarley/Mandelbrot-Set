@@ -92,10 +92,11 @@ void Display::initializeEventQueue() {
             break;
           }
           // recenter display to mouse button event location
-          moveDisplayToMouseEvent(e.button);
+          moveDisplay(e.button);
           break;
         case SDL_KEYDOWN:
           switch (e.key.keysym.sym) {
+            // arrow keys
             case SDLK_UP:
               moveDisplay(Direction::Up);
               break;
@@ -107,6 +108,26 @@ void Display::initializeEventQueue() {
               break;
             case SDLK_LEFT:
               moveDisplay(Direction::Left);
+              break;
+            // WASD keys
+            case SDLK_w:
+              moveDisplay(Direction::Up);
+              break;
+            case SDLK_s:
+              moveDisplay(Direction::Down);
+              break;
+            case SDLK_a:
+              moveDisplay(Direction::Right);
+              break;
+            case SDLK_d:
+              moveDisplay(Direction::Left);
+              break;
+            // zoom in/out
+            case SDLK_EQUALS:
+              zoomIntoDisplay(ZoomDirection::In);
+              break;
+            case SDLK_MINUS:
+              zoomIntoDisplay(ZoomDirection::Out);
               break;
           }
           break;
@@ -134,20 +155,9 @@ void Display::recenterFractal(const int x, const int y) {
   fractal_->moveAlongAxes(pcntRight, pcntUp);
 }
 
-// move display when mouse event occurs
-void Display::moveDisplayToMouseEvent(SDL_MouseButtonEvent button) {
-  std::cout << "Move display."
-            << "\n";
-
-  recenterFractal(button.x,
-                  button.y);  // set new fractal position
-
-  updateRendering();  // update display
-}
-
-// move display when arrow key pressed
-void Display::moveDisplay(Direction direction) {
-  double pcntUp;
+void Display::recenterFractal(Direction direction) {
+  double pcntUp;  // note that sdl2 inverts y-axis (i.e. y coordinate increases
+                  // as you move down)
   double pcntRight;
 
   switch (direction) {
@@ -170,11 +180,37 @@ void Display::moveDisplay(Direction direction) {
     default:
       break;
   }
-
-  // recenter subset to search for points
   fractal_->moveAlongAxes(pcntRight, pcntUp);
+}
+
+// move display when mouse event occurs
+void Display::moveDisplay(SDL_MouseButtonEvent button) {
+  recenterFractal(button.x,
+                  button.y);  // set new fractal position
 
   updateRendering();  // update display
+}
+
+// move display when arrow key pressed
+void Display::moveDisplay(Direction direction) {
+  recenterFractal(direction);  // set new fractal position
+
+  updateRendering();  // update display
+}
+
+// zoom into / out of display when +/- key pressed
+void Display::zoomIntoDisplay(ZoomDirection direction) {
+  switch (direction) {
+    case ZoomDirection::In:
+      fractal_->zoomIntoWindow(Mandelbrot::ZOOM_MULTIPLIER);
+      break;
+    case ZoomDirection::Out:
+      fractal_->zoomIntoWindow(1 / Mandelbrot::ZOOM_MULTIPLIER);
+    default:
+      break;
+  }
+  updateRendering();  // update display
+  // TO DO: update rendering in event queue
 }
 
 // return total number of pixels to display

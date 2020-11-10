@@ -1,8 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include <iostream>  // TEMPORARY
 #include <stdexcept>
-
 template <typename T>
 class Window {
  public:
@@ -45,6 +45,9 @@ class Window {
 
   T width() const { return width_; }
   T height() const { return height_; }
+
+  T x_mid() const { return (x_min_ + x_max_) / 2; }  // x midpoint
+  T y_mid() const { return (y_min_ + y_max_) / 2; }  // y midpoint
 
   // setters
   void x_min(T x_min) {
@@ -103,13 +106,16 @@ class Window {
 
   // modify window boundary by zooming in / out with multiplier
   void zoomIntoWindow(double zoomMultiplier) {
-    x_min_ *= zoomMultiplier;
-    x_max_ *= zoomMultiplier;
-    y_min_ *= zoomMultiplier;
-    y_min_ *= zoomMultiplier;
+    T x_mid_prior = x_mid();
+    T y_mid_prior = y_mid();
 
-    height_ *= zoomMultiplier;
+    x_min_ = x_mid_prior - width_ * zoomMultiplier / 2;
+    x_max_ = x_mid_prior + width_ * zoomMultiplier / 2;
+    y_min_ = y_mid_prior - height_ * zoomMultiplier / 2;
+    y_max_ = y_mid_prior + height_ * zoomMultiplier / 2;
+
     width_ *= zoomMultiplier;
+    height_ *= zoomMultiplier;
   }
 
   void width(T width) {

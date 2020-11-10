@@ -5,7 +5,6 @@
 #include <future>
 #include <mutex>
 #include <queue>
-#include <thread>
 #include <vector>
 #include "pixel.h"
 
@@ -77,9 +76,6 @@ class PixelQueue {
 
   size_t size();  // queue size
   bool empty();   // return true when queue empty
-
-  // TO DO : figure out how to receive messages and sent them to display
-  // void pushBack(Pixel&& pixel);  // add pixel to back of queue
 
  private:
   MessageQueue<Pixel> queue_;  // queue of pixels

@@ -2,8 +2,7 @@
 
 PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
     : image_(image), fractal_(fractal) {
-  // construct and add all pixels to queue
-  pushAll();
+  pushAll();  // construct and add all pixels to queue
 }
 
 PixelQueue::~PixelQueue() {

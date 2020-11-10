@@ -3,10 +3,11 @@
 
 #include <SDL.h>
 #include <memory>
-#include <string>
 #include "pixel_queue.h"
 
 enum class Direction { Up, Down, Right, Left };
+
+enum class ZoomDirection { In, Out };
 
 class Display {
  public:
@@ -28,9 +29,12 @@ class Display {
   void clearDisplay();          // set display background to white
   void recenterFractal(const int x,
                        const int y);  // recenter subset to search for points
-  void moveDisplayToMouseEvent(
+  void recenterFractal(Direction direction);
+  void moveDisplay(
       SDL_MouseButtonEvent button);  // move display when mouse event occurs
   void moveDisplay(Direction direction);  // move display when arrow key pressed
+  void zoomIntoDisplay(ZoomDirection direction);  // zoom into / out of display
+                                                  // when +/- key pressed
 
   int pixelCount();  // return total number of pixels to display
 

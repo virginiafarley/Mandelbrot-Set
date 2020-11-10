@@ -7,10 +7,13 @@
 namespace Mandelbrot {
 
 const int MAX_ITERATIONS{
-    100};  // maximum number of iterations to determine if
+    200};  // maximum number of iterations to determine if
            // sequence bounded in absolute value for given point
 
-const double MOVE_PERCENTAGE{.10};  // standard amount to move display
+const double MOVE_PERCENTAGE{.10};  // default amount to move display
+
+const double ZOOM_MULTIPLIER{
+    .5};  // default multiplier for zooming into / out o f display
 
 // return Mandelbrot function f_c(z) = z^2 + c
 std::complex<double> mandelbrotFunction(std::complex<double>& z,
