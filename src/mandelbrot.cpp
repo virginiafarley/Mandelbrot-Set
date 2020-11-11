@@ -24,7 +24,7 @@ std::complex<double> Mandelbrot::complexFromCartesian(
 
 // adjust number of iterations to [0, 1] interval
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-double Mandelbrot::bernsteinTValue(const int& nIterations) {
+double Mandelbrot::bernsteinTValue(const int nIterations) {
   return (double)nIterations /
          (double)Mandelbrot::MAX_ITERATIONS;  // [0, 1] interval
 }

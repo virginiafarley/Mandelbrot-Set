@@ -29,9 +29,8 @@ int main() {
   // render initial mandelbrot set
   display.renderMandelbrotSet();
 
-  std::cout << "Render initial Mandelbrot Set"
-            << "\n";
-
+  //   std::cout << "Render initial Mandelbrot Set"
+  //             << "\n";
   std::chrono::high_resolution_clock::time_point endTime =
       std::chrono::high_resolution_clock::now();
 
@@ -42,8 +41,6 @@ int main() {
   std::cout << "execution time: " << cycleDuration << std::endl;
 
   display.initializeEventQueue();
-
-  // display.clearDisplay(); // NOT USED
 
   return 0;
 }

@@ -35,8 +35,8 @@ Display::Display(std::shared_ptr<Window<int>> image,
     std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
     throw std::runtime_error("SDL renderer failed");
   }
-  std::cout << "Initialize display. Width: " << image->width() << "\t"
-            << " Height: " << image->height() << "\n";
+  // std::cout << "Initialize display. Width: " << image->width() << "\t"
+  //           << " Height: " << image->height() << "\n";
 }
 
 Display::~Display() {
@@ -78,8 +78,8 @@ void Display::updateRendering() {
 
 // handle SDL events
 void Display::initializeEventQueue() {
-  std::cout << "Initialize event queue."
-            << "\n";
+  // std::cout << "Initialize event queue."
+  //           << "\n";
   bool quit = false;
   SDL_Event e;
   while (!quit) {
@@ -139,13 +139,13 @@ void Display::initializeEventQueue() {
 }
 
 // set display background to white
-void Display::clearDisplay() {
-  std::cout << "Clear display."
-            << "\n";
-  SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
-  SDL_RenderClear(ren_);
-  SDL_RenderPresent(ren_);
-}
+// void Display::clearDisplay() {
+//   std::cout << "Clear display."
+//             << "\n";
+//   SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
+//   SDL_RenderClear(ren_);
+//   SDL_RenderPresent(ren_);
+// }
 
 // recenter subset to search for points
 void Display::recenterFractal(const int x, const int y) {

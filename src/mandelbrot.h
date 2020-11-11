@@ -7,7 +7,7 @@
 namespace Mandelbrot {
 
 const int MAX_ITERATIONS{
-    200};  // maximum number of iterations to determine if
+    100};  // maximum number of iterations to determine if
            // sequence bounded in absolute value for given point
 
 const double MOVE_PERCENTAGE{.10};  // default amount to move display
@@ -27,7 +27,7 @@ std::complex<double> complexFromCartesian(Window<int>* image,
 
 // return number of iterations adjusted to [0, 1] interval
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-double bernsteinTValue(const int& nIterations);
+double bernsteinTValue(const int nIterations);
 
 // return Bernstein t value from escape time algorithm
 double tValueFromEscapeTime(const std::complex<double>& c);

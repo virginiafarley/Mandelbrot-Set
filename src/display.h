@@ -26,7 +26,7 @@ class Display {
   void renderMandelbrotSet();   // render default mandelbrot set
   void updateRendering();       // update rendering
   void initializeEventQueue();  // handle SDL events
-  void clearDisplay();          // set display background to white
+  // void clearDisplay();          // set display background to white
   void recenterFractal(const int x,
                        const int y);  // recenter subset to search for points
   void recenterFractal(Direction direction);
