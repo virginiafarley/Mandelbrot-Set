@@ -15,15 +15,15 @@ const double MOVE_PERCENTAGE{.10};  // default amount to move display
 const double ZOOM_MULTIPLIER{
     .5};  // default multiplier for zooming into / out o f display
 
-// return Mandelbrot function f_c(z) = z^2 + c
-std::complex<double> mandelbrotFunction(std::complex<double>& z,
-                                        const std::complex<double>& c);
+// compute next iteration of Mandelbrot function f_c(z) = z^2 + c
+void mandelbrotFunction(std::complex<double>& z, const std::complex<double>& c);
 
 // convert Cartesian coordinates to complex coordinates
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/
-std::complex<double> complexFromCartesian(Window<int>* image,
-                                          Window<double>* fractal,
-                                          std::complex<double>& coordinates);
+std::complex<double> complexFromCartesian(
+    Window<int>* image,
+    Window<double>* fractal,
+    const std::complex<double>& coordinates);
 
 // return number of iterations adjusted to [0, 1] interval
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/

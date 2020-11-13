@@ -67,6 +67,10 @@ class PixelQueue {
   PixelQueue(PixelQueue&&) = delete;             // move constructor
   PixelQueue& operator=(PixelQueue&&) = delete;  // move assignment operator
 
+  // set data handles (not owned)
+  void image(Window<int>* image);
+  void fractal(Window<double>* fractal);
+
   // typical behavior methods
 
   void pushAll();                         // add all pixels to queue

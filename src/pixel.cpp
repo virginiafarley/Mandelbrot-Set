@@ -2,27 +2,16 @@
 #include <stdexcept>
 
 // constructors
-Pixel::Pixel(int x, int y) : x_(x), y_(y) {
-  image_ = nullptr;
-  fractal_ = nullptr;
-  // x coordinate real; y coordinate imaginary
-  cartesianCoords_ = std::complex<double>((double)x, (double)y);
-}
+Pixel::Pixel() {}
 
-Pixel::Pixel(int x, int y, Window<int>* image, Window<double>* fractal)
-    : x_(x), y_(y), image_(image), fractal_(fractal) {
-  cartesianCoords_ = std::complex<double>((double)x, (double)y);
-  if (image == nullptr) {
-    throw std::invalid_argument("image is null pointer");
-  }
-  if (fractal == nullptr) {
-    throw std::invalid_argument("fractal is null pointer");
-  }
-}
+Pixel::Pixel(int x, int y)
+    : x_(x),
+      y_(y),
+      cartesianCoords_(std::complex<double>((double)x, (double)y)) {}
 
 // getters
 
-std::complex<double> Pixel::cartesianCoords() const {
+const std::complex<double>& Pixel::cartesianCoords() const {
   return cartesianCoords_;
 }
 
@@ -73,17 +62,4 @@ void Pixel::color(const double& tValue) {
   Pixel::red(Mandelbrot::bernsteinRed(tValue));
   Pixel::green(Mandelbrot::bernsteinGreen(tValue));
   Pixel::blue(Mandelbrot::bernsteinBlue(tValue));
-}
-
-// set data handles (not owned)
-void Pixel::image(Window<int>* image) {
-  image_ = image;
-}
-void Pixel::fractal(Window<double>* fractal) {
-  fractal_ = fractal;
-}
-
-// compute complex domain of pixel coordinates
-std::complex<double> Pixel::GetComplexCoords() {
-  return Mandelbrot::complexFromCartesian(image_, fractal_, cartesianCoords_);
 }

@@ -1,10 +1,9 @@
 #include "mandelbrot.h"
 
 // Mandelbrot function
-std::complex<double> Mandelbrot::mandelbrotFunction(
-    std::complex<double>& z,
-    const std::complex<double>& c) {
-  return std::pow(z, 2) + c;
+void Mandelbrot::mandelbrotFunction(std::complex<double>& z,
+                                    const std::complex<double>& c) {
+  z = std::pow(z, 2) + c;
 }
 
 // convert Cartesian coordinates to Complex coordinates
@@ -12,7 +11,7 @@ std::complex<double> Mandelbrot::mandelbrotFunction(
 std::complex<double> Mandelbrot::complexFromCartesian(
     Window<int>* image,
     Window<double>* fractal,
-    std::complex<double>& coordinates) {
+    const std::complex<double>& coordinates) {
   double real =
       coordinates.real() / image->width() * fractal->width() + fractal->x_min();
 
@@ -38,7 +37,7 @@ double Mandelbrot::tValueFromEscapeTime(const std::complex<double>& c) {
     if (std::abs(z) > 2 || nIterations >= Mandelbrot::MAX_ITERATIONS) {
       break;
     }
-    z = Mandelbrot::mandelbrotFunction(z, c);
+    Mandelbrot::mandelbrotFunction(z, c);
     nIterations++;
   }
   return Mandelbrot::bernsteinTValue(

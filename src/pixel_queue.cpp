@@ -1,7 +1,14 @@
 #include "pixel_queue.h"
+#include <stdexcept>
 
 PixelQueue::PixelQueue(Window<int>* image, Window<double>* fractal)
     : image_(image), fractal_(fractal) {
+  if (image == nullptr) {
+    throw std::invalid_argument("image is null pointer");
+  }
+  if (fractal == nullptr) {
+    throw std::invalid_argument("fractal is null pointer");
+  }
   pushAll();  // construct and add all pixels to queue
 }
 
@@ -12,6 +19,14 @@ PixelQueue::~PixelQueue() {
 
   // destroy all elements to improve space overhead
   futures_.clear();
+}
+
+// set data handles (not owned)
+void PixelQueue::image(Window<int>* image) {
+  image_ = image;
+}
+void PixelQueue::fractal(Window<double>* fractal) {
+  fractal_ = fractal;
 }
 
 // add all pixels to queue
@@ -26,11 +41,11 @@ void PixelQueue::pushAll() {
 // create row of pixels
 void PixelQueue::constructPixelRow(int rowNumber) {
   for (int j = 0; j < image_->width(); j++) {  // iterate columns (x-axis)
-    // pixel instances hold non-owning reference to image and fractal
-    Pixel pixel(j, rowNumber, image_, fractal_);
+    Pixel pixel(j, rowNumber);
 
-    // calculate complex representation of pixel coordinates
-    std::complex<double> complexCoords = pixel.GetComplexCoords();
+    // calculate complex domain of pixel coordinates
+    std::complex<double> complexCoords = Mandelbrot::complexFromCartesian(
+        image_, fractal_, pixel.cartesianCoords());
 
     // compute Bernstein t value using escape time algoirthm
     double tValue = Mandelbrot::tValueFromEscapeTime(complexCoords);
