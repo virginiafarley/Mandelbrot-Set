@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 #include <memory>
-#include "pixel_queue.h"
+#include "pixel_vector.h"
 
 enum class Direction { Up, Down, Right, Left };
 
@@ -44,7 +44,7 @@ class Display {
 
   // data handles (owned)
 
-  PixelQueue pixels_;  // object that holds pixels to display
+  PixelVector pixels_;  // object that holds pixels to display
 
   std::shared_ptr<Window<int>> image_;  // TO DO: image_ should not be owned.
   std::shared_ptr<Window<double>> fractal_;
