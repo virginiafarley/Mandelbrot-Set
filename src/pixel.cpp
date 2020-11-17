@@ -11,7 +11,7 @@ Pixel::Pixel(int x, int y)
 
 // getters
 
-const std::complex<double>& Pixel::cartesianCoords() const {
+const std::complex<double> Pixel::cartesianCoords() const {
   return cartesianCoords_;
 }
 

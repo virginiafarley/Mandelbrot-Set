@@ -10,7 +10,7 @@ class Pixel {
   Pixel(int x, int y);
 
   // getters
-  const std::complex<double>& cartesianCoords()
+  const std::complex<double> cartesianCoords()
       const;      // return cartesian coordinates
   int x() const;  // get x position
   int y() const;  // get y position

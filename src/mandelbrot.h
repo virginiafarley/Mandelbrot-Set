@@ -23,7 +23,7 @@ void mandelbrotFunction(std::complex<double>& z, const std::complex<double>& c);
 std::complex<double> complexFromCartesian(
     Window<int>* image,
     Window<double>* fractal,
-    const std::complex<double>& coordinates);
+    const std::complex<double> coordinates);
 
 // return number of iterations adjusted to [0, 1] interval
 // source: https://solarianprogrammer.com/2013/02/28/mandelbrot-set-cpp-11/

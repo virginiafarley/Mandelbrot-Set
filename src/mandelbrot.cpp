@@ -11,7 +11,7 @@ void Mandelbrot::mandelbrotFunction(std::complex<double>& z,
 std::complex<double> Mandelbrot::complexFromCartesian(
     Window<int>* image,
     Window<double>* fractal,
-    const std::complex<double>& coordinates) {
+    const std::complex<double> coordinates) {
   double real =
       coordinates.real() / image->width() * fractal->width() + fractal->x_min();
 
